@@ -7,70 +7,181 @@
 // 6) We need a function that will reset the game after a round is
 
 const cardId = [
-{suit: '10 of Clubs',
-value: 10},
-'10 of Diamonds': 10,
-'10 of Hearts': 10,
-'10 of Spades': 10,
-'2 of Clubs': 2,
-'2 of Diamonds': 2,
-'2 of Hearts': 2,
-'2 of Spades': 2,
-'3 of Clubs': 3,
-'3 of Diamonds': 3,
-'3 of Hearts': 3,
-'3 of Spades': 3,
-'4 of Clubs': 4,
-'4 of Diamonfs': 4,
-'4 of Hearts': 4,
-'4 of Spades': 4,
-'5 of Clubs': 5,
-'5 of Diamonds': 5,
-'5 of Hearts': 5,
-'5 of Spades': 5,
-'6 of Clubs': 6,
-'6 of Diamonds': 6,
-'6 of Hearts': 6,
-'6 of Spades': 6,
-'7 of Clubs': 7,
-'7 of Diamonds': 7,
-'7 of Hearts': 7,
-'7 of Spades': 7,
-'8 of Clubs': 8,
-'8 of Diamonds': 8,
-'8 of Hearts': 8,
-'8 of Spades': 8,
-'9 of Clubs': 9,
-'9 of Diamonds': 9,
-'9 of Hearts': 9,
-'9 of Spades': 9,
-'11 Ace of Clubs': 11,
-'11 Ace of Diamonds': 11,
-'11 Ace of Hearts': 11,
-'11 Ace of Spades': 11,
-'10 Jack of Clubs': 10,
-'10 Jack of Diamonds': 10,
-'10 Jack of Hearts': 10,
-'10 Jack of Spades': 10,
-'10 King of Clubs': 10,
-'10 King of Diamonds': 10,
-'10 King of Hearts': 10,
-'10 Kind of Spades': 10,
-'10 Queen of Clubs': 10,
-'10 Queen of Diamonds': 10,
-'10 Queen of Hearts': 10,
-'10 Queen of Spades': 10
+{
+  suit: '10 of Clubs',
+  value: 10,
+  img: '10C.png'
+}, {
+  suit: '10 of Diamonds',
+  value: 10,
+  img: '10D.png'
+},{
+  suit: '10 of Hearts',
+  value: 10,
+  img: '10H.png'
+}, {
+  suit: '10 of Spades',
+  value: 10,
+  img: '10S.png'
+}, {
+  suit: '2 of Clubs',
+  value: 2,
+  img: '2C.png'
+}, {
+  suit: '2 of Diamonds',
+  value: 2,
+  img: '2D.png'
+  }, {  
+  suit: '2 of Hearts',
+  value: 2,
+}, {
+  suit: '2 of Spades',
+  value: 2
+}, {
+  suit: '3 of Clubs',
+  value: 3
+}, {
+  suit: '3 of Diamonds',
+  value: 3
+}, {
+  suit: '3 of Hearts',
+  value: 3
+}, {
+  suit: '3 of Spades', 
+  value : 3
+}, {
+  suit: '4 of Clubs',
+  value: 4
+}, {
+  suit: '4 of Diamonds',
+  value: 4
+}, {
+  suit: '4 of Hearts',
+  value: 4
+}, {
+  suit:'4 of Spades',
+  value: 4
+}, {
+  suit:'5 of Clubs',
+  value: 5
+}, {
+  suit: '5 of Diamonds',
+  value: 5
+}, {
+  suit:'5 of Hearts',
+  value: 5
+}, {
+  suit: '5 of Spades',
+  value: 5,
+}, {
+  suit: '6 of Clubs',
+  value: 6
+}, {
+  suit: '6 of Diamonds',
+  value: 6
+}, {
+  suit: '6 of Hearts',
+  value: 6
+}, {
+  suit: '6 of Spades',
+  value: 6
+}, {
+suit: '7 of Clubs',
+value: 7
+}, {
+  suit: '7 of Diamonds',
+  value: 7
+}, {
+  suit: '7 of Hearts',
+  value: 7
+}, {
+  suit: '7 of Spades',
+  value: 7
+}, {
+  suit: '8 of Clubs',
+  value: 8
+}, {
+  suit: '8 of Diamonds',
+  value: 8
+}, {
+  suit: '8 of Hearts',
+  value: 8
+}, {
+  suit: '8 of Spades',
+  value: 8
+}, {
+  suit:'9 of Clubs',
+  value: 9
+}, {
+	suit: '9 of Diamonds',
+	value: 9
+}, {
+  suit: '9 of Hearts',
+  value: 9
+}, {
+  suit: '9 of Spades',
+  value: 9
+}, {
+  suit: '11 Ace of Clubs',
+  value: 11
+}, {
+  suit: '11 Ace of Diamonds',
+  value: 11
+}, {
+  suit:'11 Ace of Hearts',
+  value: 11
+}, {
+ suit: '11 Ace of Spades',
+ value: 11
+}, {
+  suit: '10 Jack of Clubs',
+  value: 10
+}, {
+  suit: '10 Jack of Diamonds',
+  value: 10 
+}, {
+  suit:'10 Jack of Hearts',
+  value: 10
+}, {
+  suit: '10 Jack of Spades',
+  value: 10
+}, {
+ suit: '10 King of Clubs',
+ value: 10
+}, {
+  suit: '10 King of Diamonds',
+  value: 10
+}, {
+  suit: '10 King of Hearts',
+  value: 10
+}, {
+  suit: '10 Kind of Spades',
+  value: 10
+}, {
+  suit: '10 Queen of Clubs',
+  value: 10
+}, {
+  suit: '10 Queen of Diamonds',
+  value: 10
+}, {
+  suit: '10 Queen of Hearts',
+  value: 10
+}, {
+  suit:'10 Queen of Spades',
+  value: 10
+}
+
 ]
 
 
-function shuffleArray(cardId) {
-    for (let i = cardId.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [cardId[i], array[j]] = [array[j], cardId[i]];
-    }
-}
+// function shuffleArray(cardId) {
+//     for (let i = cardId.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [cardId[i], array[j]] = [array[j], cardId[i]];
+//     }
+// }
 
-shuffleArray(cardId);
+// shuffleArray(cardId);
 
 
 
