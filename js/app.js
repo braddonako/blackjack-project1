@@ -2,7 +2,7 @@
 // 2) write a function to shuffle the deck x
 // 3) write a function to deal the cards to each player. x
 // 4) write a function to for hit and stay. Porbably with jquery. If the button is pressed,
-// they will be dealt another card
+// they will be dealt another card x -- 
 // 5) Computer player will automatically hit until they are over 17 or bust
 // 6) We need a function that will reset the game after a round is
 
@@ -232,14 +232,23 @@ const player = {
 	},  
 	    total(){
 	    	const total = this.hand[0].value + this.hand[1].value;
-	    	console.log(total + ' is the score of your two cards. Do you want to hit or stay?')
+	    	console.log(total + ' is the score of your two cards. Do you want to hit or stay?');
+	    	if (total === 21){
+			console.log('The dealer has a Blackjack');
+		}
 	    },
 	    hit(){
+	    	const total = this.hand[0].value + this.hand[1].value;
+	    	let newTotal;
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
-	    		console.log('Here is your updated hand ' + cardId[hit].suit);
+	    		console.log('You have been dealt a ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		cardId.splice(this.hand, 1)[0];
+	    		newTotal = parseInt(total + cardId[hit].value);
+	    		console.log('Your hand total is ' + newTotal)
+	    	} if (newTotal > 21){
+	    		console.log('You have busted');
 	    	}
 	    }
 	}
@@ -258,22 +267,26 @@ const dealer = {
 	},
 	total(){
 		const total = this.hand[0].value + this.hand[1].value;
+		let newTotal;
 		console.log(total + ' is the total of the dealer two cards.');
-		if (total >= 17){
-			console.log('The dealer is staying');
+		if (total === 21){
+			console.log('The dealer has a Blackjack');
+		} else if (total >= 17){
+			console.log('The dealer is staying!!!');
 		} else if (total < 17){
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		cardId.splice(this.hand, 1)[0];
-	    		console.log('the dealers new total is ' + parseInt(total + cardId[hit].value));
+	    		newTotal = parseInt(total + cardId[hit].value);
+	    		console.log('The dealers total hand is now ' + newTotal);
 	    	}
-		} else if (total > 21){
-			console.log('The dealer went over 21. Its a bust');
-		} else if (total === 21) {
-			console.log('The dealer has a Blackjack!');
 		}
+		if (newTotal > 21){
+	    		console.log('The dealer has busted.');
+	    	
+		} 
 	}
 }
 
@@ -281,10 +294,19 @@ const dealer = {
 
 	// }
 
+
+const startGame = () => {
 player.deal();
 player.total();
+prompt('Do you want to hit or stay?');
+if ('Hit' || "hit"){
+	player.hit();
+}
 dealer.deal();
 dealer.total();
+}
+
+startGame();
 
 
 
