@@ -248,17 +248,19 @@ const computer = {
 		    this.hand.push(cardId[card]);
 		    cardId.splice(card, 1)[0]; 
 	    }
+	},
+	total(){
+		const total = this.hand[0].value + this.hand[1].value;
+		console.log(total);
 	}
-	// hit(){
-
-	// }
+	}
 	// stand(){
 
 	// }
-}
 
 player.deal();
 computer.deal();
+computer.total();
 
 
 
