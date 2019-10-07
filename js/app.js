@@ -1,6 +1,6 @@
 // 1)create a deck x
 // 2) write a function to shuffle the deck x
-// 3) write a function to deal the cards to each player. 
+// 3) write a function to deal the cards to each player. x
 // 4) write a function to for hit and stay. Porbably with jquery. If the button is pressed,
 // they will be dealt another card
 // 5) Computer player will automatically hit until they are over 17 or bust
@@ -228,15 +228,22 @@ const player = {
 		console.log('You have been dealt a ' + cardId[card].suit);
 		this.hand.push(cardId[card]);
 		cardId.splice(card, 1)[0]; 
-	    }   
+	    }
+	},  
+	    total(){
+	    	const total = this.hand[0].value + this.hand[1].value;
+	    	console.log(total + ' is the score of your two cards. Do you want to hit or stay?')
+	    },
+	    hit(){
+	    	for (let i = 0; i<1; i++){
+	    		let hit = Math.floor(Math.random() * cardId.length);
+	    		console.log('Here is your updated hand ' + cardId[hit].suit);
+	    		this.hand.push(cardId[hit]);
+	    		cardId.splice(this.hand, 1)[0];
+	    	}
+	    }
 	}
-	// hit(){
 
-	// }
-	// stand(){
-
-	// }
-}
 
 const computer = {
 	name: 'computer',
@@ -251,15 +258,27 @@ const computer = {
 	},
 	total(){
 		const total = this.hand[0].value + this.hand[1].value;
-		console.log(total);
+		console.log(total + ' is the score of the computers two cards.');
+		if (total >= 17){
+			console.log('The dealer is staying')
+		} else if (total < 17){
+	    	for (let i = 0; i<1; i++){
+	    		let hit = Math.floor(Math.random() * cardId.length);
+	    		console.log('The computer hit. Their new card is ' + cardId[hit].suit);
+	    		this.hand.push(cardId[hit]);
+	    		cardId.splice(this.hand, 1)[0];
+		}
 	}
-	}
+}
+}
+
 	// stand(){
 
 	// }
 
 player.deal();
 computer.deal();
+player.total();
 computer.total();
 
 
