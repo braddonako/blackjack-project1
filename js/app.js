@@ -1,5 +1,5 @@
 // 1)create a deck x
-// 2) write a function to shuffle the deck 
+// 2) write a function to shuffle the deck x
 // 3) write a function to deal the cards to each player. 
 // 4) write a function to for hit and stay. Porbably with jquery. If the button is pressed,
 // they will be dealt another card
@@ -153,7 +153,7 @@ const cardId = [
   img: '9S.png'
 }, {
   suit: '11 Ace of Clubs',
-  value: 11
+  value: 11,
   img: 'AC.png'
 }, {
   suit: '11 Ace of Diamonds',
@@ -219,15 +219,47 @@ const cardId = [
 
 ]
 
+const player = { 
+	name: 'Brad',
+	hand: [],
+	deal(){ // this will shuffle the deck, as well as giving the player two random cards
+		for (let i = 0; i < 2; i++){
+		let card = Math.floor(Math.random() * cardId.length); //push into a new array === current hand
+		console.log('You have been dealt a ' + cardId[card].suit);
+		this.hand.push(cardId[card]);
+		cardId.splice(card, 1)[0]; 
+	    }   
+	}
+	// hit(){
 
-// function shuffleArray(cardId) {
-//     for (let i = cardId.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [cardId[i], array[j]] = [array[j], cardId[i]];
-//     }
-// }
+	// }
+	// stand(){
 
-// shuffleArray(cardId);
+	// }
+}
+
+const computer = {
+	name: 'computer',
+	hand: [],
+	deal(){ // same function as the player deal. This will give the computer two random cards
+		for (let i = 0; i < 2; i++){
+		    let card = Math.floor(Math.random() * cardId.length);
+		    console.log('The computer has been dealt a ' + cardId[card].suit); 
+		    this.hand.push(cardId[card]);
+		    cardId.splice(card, 1)[0]; 
+	    }
+	}
+	// hit(){
+
+	// }
+	// stand(){
+
+	// }
+}
+
+player.deal();
+computer.deal();
+
 
 
 
