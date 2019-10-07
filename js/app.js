@@ -245,31 +245,36 @@ const player = {
 	}
 
 
-const computer = {
-	name: 'computer',
+const dealer = {
+	name: 'dealer',
 	hand: [],
 	deal(){ // same function as the player deal. This will give the computer two random cards
 		for (let i = 0; i < 2; i++){
 		    let card = Math.floor(Math.random() * cardId.length);
-		    console.log('The computer has been dealt a ' + cardId[card].suit); 
+		    console.log('The dealer has been dealt a ' + cardId[card].suit); 
 		    this.hand.push(cardId[card]);
 		    cardId.splice(card, 1)[0]; 
 	    }
 	},
 	total(){
 		const total = this.hand[0].value + this.hand[1].value;
-		console.log(total + ' is the score of the computers two cards.');
+		console.log(total + ' is the total of the dealer two cards.');
 		if (total >= 17){
-			console.log('The dealer is staying')
+			console.log('The dealer is staying');
 		} else if (total < 17){
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
-	    		console.log('The computer hit. Their new card is ' + cardId[hit].suit);
+	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		cardId.splice(this.hand, 1)[0];
+	    		console.log('the dealers new total is ' + parseInt(total + cardId[hit].value));
+	    	}
+		} else if (total > 21){
+			console.log('The dealer went over 21. Its a bust');
+		} else if (total === 21) {
+			console.log('The dealer has a Blackjack!');
 		}
 	}
-}
 }
 
 	// stand(){
@@ -277,9 +282,9 @@ const computer = {
 	// }
 
 player.deal();
-computer.deal();
 player.total();
-computer.total();
+dealer.deal();
+dealer.total();
 
 
 
