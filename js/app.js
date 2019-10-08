@@ -97,7 +97,7 @@ const cardId = [
 }, {
   suit: '5 of Spades',
   value: 5,
-  img: '5S/png'
+  img: '5S.png'
 }, {
   suit: '6 of Clubs',
   value: 6,
@@ -225,26 +225,32 @@ const cardId = [
 }, {
   suit:'10 Queen of Spades',
   value: 10,
-  img: 'QS.png'
+  img: '/QS.png'
 }
 
 ]
 
-const player = { // can I make a new class off of this for the dealer??? // maybe not... for DRY 
+
+const player = { 
 	name: 'Brad',
 	hand: [],
 	deal(){ // this will shuffle the deck, as well as give the player two random cards
 		// I looped through my cards array, and pushed two cards from it  into the hand array on line 233.
 		// this way the player can access it from the global scope  
 		// This is where I could use jQuery?
+		// $('.deal').on(click){
+		// 	console.log('button is working');
+		// }
 		for (let i = 0; i < 2; i++){
 		let card = Math.floor(Math.random() * cardId.length); //push into a new array === current hand
 		console.log('You have been dealt a ' + cardId[card].suit);
 		this.hand.push(cardId[card]); // I am removing the card from the cardId class. (Maybe I could name this arrayCardDeck?)deck as well - and placing it in the hand
 		cardId.splice(card, 1)[0]; //taking them out of the array
+		 $('#yourCards').append(cardId[card].img);
+		 console.log(cardId[card].img);
 	    }
 	},  
-	    sum(){
+	sum(){
 	    	const sum = this.hand[0].value + this.hand[1].value; // This is the sum of the two cards that were dealed
 	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?'); // 
 	    	if (sum === 21){
@@ -252,27 +258,25 @@ const player = { // can I make a new class off of this for the dealer??? // mayb
 			return;
 		}
 	    },
-	    hit(){
-	    	const sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
-	    	let newSum; // newSum was called here so I could call it later
+	hit(){
+	    const sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
+	    let newSum; // newSum was called here so I could call it later
 	    	
-	    	for (let i = 0; i<1; i++){
-	    		let hit = Math.floor(Math.random() * cardId.length);
-	    		console.log('You have been dealt a ' + cardId[hit].suit);
-	    		this.hand.push(cardId[hit]); //take the random card for hit 
-	    		cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
-	    		newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
-	    		console.log('Your hand total is ' + newSum);
+	    for (let i = 0; i<1; i++){
+	    	let hit = Math.floor(Math.random() * cardId.length);
+	    	console.log('You have been dealt a ' + cardId[hit].suit);
+	    	this.hand.push(cardId[hit]); //take the random card for hit 
+	    	cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
+	    	newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
+			console.log('Your hand total is ' + newSum);
+			$('#yourCards').append(cardId[hit].img);
 	    	} if (newSum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    		//when I run the game, this runs and should end the game
 	    		console.log('You have busted');
-	    		// return console.log('dealer wins');
+	    		return console.log('Dealer wins');
 	    	}
-	    },
-	    stand(){
-	    	end();
 	    }
-	}
+}
 
 
 const dealer = {
@@ -284,6 +288,8 @@ const dealer = {
 		    console.log('The dealer has been dealt a ' + cardId[card].suit); 
 		    this.hand.push(cardId[card]);
 		    cardId.splice(card, 1)[0]; 
+		    $('#dealerCards').append(cardId[card].img);
+		 console.log(cardId[card].img);
 	    }
 	},
 	sum(){
@@ -292,7 +298,7 @@ const dealer = {
 		console.log(sum + ' is the total of the dealer two cards.');
 		if (sum === 21){
 			console.log('The dealer has a Blackjack');
-			return 'Round over';
+			return;
 		} else if (sum >= 17){
 			console.log('The dealer is staying!!!');
 		} else if (sum < 17){
@@ -303,44 +309,50 @@ const dealer = {
 	    		cardId.splice(this.hand, 1)[0];
 	    		newSum = parseInt(sum + cardId[hit].value);
 	    		console.log('The dealers total hand is now ' + newSum);
+	    		$('#dealerCards').append(cardId[hit].img);
 	    	}
 		}
 		if (newSum > 21){
 	    		console.log('The dealer has busted.');
 	    		 return;
 	    	
-		} 
+		}
 	}
 }
+
+// const compareScore = () =>{
+
+// if (dealer.total > player.total || dealer.newTotal > player.newTotal || dealer.total > player.newTotal || dealer.newTotal > player.total){
+// 	console.log('The dealer has won this round.')
+// } else if (dealer.total < player.total || dealer.newTotal < player.newTotal || dealer.total < player.newTotal || dealer.newTotal < player.total){
+// 	console.log('You have won the round!');
+// } else if (dealer.total === player.total || dealer.newTotal === player.newTotal || dealer.total === dealer.newTotal || dealer.newTotal === player.total){
+// 	console.log('Push');
+// }
+
+// }
 
 
 
 
 const startGame = () => {
-player.deal();
-player.sum();
-prompt('Do you want to hit or stand?');
-if ('Hit' || "hit"){
-	player.hit();
-} else if ('stand' || 'Stand'){
-	player.stand(); // need to add another option for hit. Going to add this in the morning
-}
-dealer.deal();
-dealer.sum();
+	$('#dealBtn').on('click', function() {
+		player.deal();
+		player.sum();
+		dealer.deal();
+		dealer.sum();
+	});
+
+	$('#hitBtn').on('click', function() {
+		player.hit();
+	});
+
 }
 
 startGame();
 
 
-// startGame();
 
-// if (dealer.total > player.total || dealer.newTotal > player.newTotal || dealer.total > player.newTotal || dealer.Newtotal > player.total){
-// 	console.log('The dealer has won this round.')
-// } else if (dealer.total < player.total || dealer.newTotal < player.newTotal || dealer.total < player.newTotal || dealer.newTotal < player.total){
-// 	console.log('You have won the round!');
-// } else if (dealer.total === player.total || dealer.newTotal === player.newTotal){
-// 	console.log('Push');
-// }
 
 
 

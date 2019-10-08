@@ -10,13 +10,17 @@
 
 	<header>$$$ Blackjack JavaScript $$$</header>
 	<main>
-		<nav>Rules</nav>
-		<section>Welcome!</section>
+		<section class='hitOrStand'>Welcome!
+			<div id='yourCards'>Your cards</div>
+			<div id='dealerCards'>Dealer's cards</div>
+		</section>
+
+	
 		
 		<aside>
-			<input type="button" class='btn' value='hit' onClick='hit()'>
-			<input type="button" class='btn' value='stay' onClick='stay()'>
-			<input type='button' class='btn' value='deal' onClick='deal()'>
+			<input type='button' id='dealBtn' value='deal'><br>
+			<input type="button" id='hitBtn' value='hit'>
+			<input type="button" id='stayBtn' value='stay'>
 			<h3>Player's Score
 				<span id='playerScore'>0</span>
 			</h3>
@@ -27,7 +31,7 @@
 	
 	</main>
 
-	<footer>Brad Donakowski</footer>
+	<footer>Game made by Brad Donakowski</footer>
 	<!-- <input type="button" class='btn' value='start' onClick='start()'> -->
 	
 

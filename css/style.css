@@ -9,6 +9,7 @@ body {
 
 }
 
+
 #rules {
 	font-size: 12px;
 }
@@ -44,13 +45,24 @@ main {
 
 section, nav, aside {
 	flex-basis: 100px;
-	width: 600px;
+	width: 300px;
 	background: url(https://i.imgur.com/oJXXnv5.jpg);
 	color: #D99E0D;
 	font-size: 2em;
 	margin: 5px;
 	text-align: center;
 	line-height: 100px;
+}
+
+#hitBtn, #stayBtn, #dealBtn {
+	border-radius: 15px;
+	height: 30px;
+	width: 40px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	color: #0AA625;
+	background-color: #D99E0D;
 }
 
 section {
