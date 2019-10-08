@@ -230,26 +230,31 @@ const player = {
 		cardId.splice(card, 1)[0]; 
 	    }
 	},  
-	    total(){
-	    	const total = this.hand[0].value + this.hand[1].value;
-	    	console.log(total + ' is the score of your two cards. Do you want to hit or stay?');
-	    	if (total === 21){
+	    sum(){
+	    	const sum = this.hand[0].value + this.hand[1].value;
+	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?');
+	    	if (sum === 21){
 			console.log('The dealer has a Blackjack');
+			return;
 		}
 	    },
 	    hit(){
-	    	const total = this.hand[0].value + this.hand[1].value;
-	    	let newTotal;
+	    	const sum = this.hand[0].value + this.hand[1].value;
+	    	let newSum;
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('You have been dealt a ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		cardId.splice(this.hand, 1)[0];
-	    		newTotal = parseInt(total + cardId[hit].value);
-	    		console.log('Your hand total is ' + newTotal)
-	    	} if (newTotal > 21){
+	    		newSum = parseInt(sum + cardId[hit].value);
+	    		console.log('Your hand total is ' + newSum)
+	    	} if (newSum > 21){
 	    		console.log('You have busted');
+	    		// return console.log('dealer wins');
 	    	}
+	    },
+	    stand(){
+	    	end();
 	    }
 	}
 
@@ -265,45 +270,46 @@ const dealer = {
 		    cardId.splice(card, 1)[0]; 
 	    }
 	},
-	total(){
-		const total = this.hand[0].value + this.hand[1].value;
-		let newTotal;
-		console.log(total + ' is the total of the dealer two cards.');
-		if (total === 21){
+	sum(){
+		const sum = this.hand[0].value + this.hand[1].value;
+		let newSum;
+		console.log(sum + ' is the total of the dealer two cards.');
+		if (sum === 21){
 			console.log('The dealer has a Blackjack');
-		} else if (total >= 17){
+			return 'Round over';
+		} else if (sum >= 17){
 			console.log('The dealer is staying!!!');
-		} else if (total < 17){
+		} else if (sum < 17){
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		cardId.splice(this.hand, 1)[0];
-	    		newTotal = parseInt(total + cardId[hit].value);
-	    		console.log('The dealers total hand is now ' + newTotal);
+	    		newSum = parseInt(sum + cardId[hit].value);
+	    		console.log('The dealers total hand is now ' + newSum);
 	    	}
 		}
-		if (newTotal > 21){
+		if (newSum > 21){
 	    		console.log('The dealer has busted.');
+	    		 return;
 	    	
 		} 
 	}
 }
 
-	// stand(){
-
-	// }
-
 
 const startGame = () => {
 player.deal();
-player.total();
-prompt('Do you want to hit or stay?');
+player.sum();
+prompt('Do you want to hit or stand?');
 if ('Hit' || "hit"){
 	player.hit();
+} else if ('stand' || 'Stand'){
+	player.stand();
 }
 dealer.deal();
-dealer.total();
+dealer.sum();
+
 }
 
 startGame();
@@ -311,3 +317,15 @@ startGame();
 
 
 
+
+
+
+
+
+// if (dealer.total > player.total || dealer.newTotal > player.newTotal || dealer.total > player.newTotal || dealer.Newtotal > player.total){
+// 	console.log('The dealer has won this round.')
+// } else if (dealer.total < player.total || dealer.newTotal < player.newTotal || dealer.total < player.newTotal || dealer.newTotal < player.total){
+// 	console.log('You have won the round!');
+// } else if (dealer.total === player.total || dealer.newTotal === player.newTotal){
+// 	console.log('Push');
+// }
