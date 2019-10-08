@@ -21,11 +21,11 @@ const cardId = [
 {
   suit: '10 of Clubs',
   value: 10,
-  img: '10C.png'
+  img: 'PNG/10C.png'
 }, {
   suit: '10 of Diamonds',
   value: 10,
-  img: '10D.png'
+  img: 'PNG/10D.png'
 },{
   suit: '10 of Hearts',
   value: 10,
@@ -33,199 +33,199 @@ const cardId = [
 }, {
   suit: '10 of Spades',
   value: 10,
-  img: '10S.png'
+  img: 'PNG/10S.png'
 }, {
   suit: '2 of Clubs',
   value: 2,
-  img: '2C.png'
+  img: 'PNG/2C.png'
 }, {
   suit: '2 of Diamonds',
   value: 2,
-  img: '2D.png'
+  img: 'PNG/2D.png'
   }, {  
   suit: '2 of Hearts',
   value: 2,
-  img: '2H.png'
+  img: 'PNG/2H.png'
 }, {
   suit: '2 of Spades',
   value: 2,
-  img: '2S.png'
+  img: 'PNG/2S.png'
 }, {
   suit: '3 of Clubs',
   value: 3,
-  img: '3C.png'
+  img: 'PNG/3C.png'
 }, {
   suit: '3 of Diamonds',
   value: 3,
-  img: '3D.png'
+  img: 'PNG/3D.png'
 }, {
   suit: '3 of Hearts',
   value: 3,
-  img: '3H.png'
+  img: 'PNG/3H.png'
 }, {
   suit: '3 of Spades', 
   value: 3,
-  img: '3S.png'
+  img: 'PNG/3S.png'
 }, {
   suit: '4 of Clubs',
   value: 4,
-  img: '4C.png'
+  img: 'PNG/4C.png'
 }, {
   suit: '4 of Diamonds',
   value: 4,
-  img: '4D.png'
+  img: 'PNG/4D.png'
 }, {
   suit: '4 of Hearts',
   value: 4,
-  img: '4H.png'
+  img: 'PNG/4H.png'
 }, {
   suit:'4 of Spades',
   value: 4,
-  img: '4S.png'
+  img: 'PNG/4S.png'
 }, {
   suit:'5 of Clubs',
   value: 5,
-  img: '5C.png'
+  img: 'PNG/5C.png'
 }, {
   suit: '5 of Diamonds',
   value: 5,
-  img: '5D.png'
+  img: 'PNG/5D.png'
 }, {
   suit:'5 of Hearts',
   value: 5,
-  img: '5H.png'
+  img: 'PNG/5H.png'
 }, {
   suit: '5 of Spades',
   value: 5,
-  img: '5S.png'
+  img: 'PNG/5S.png'
 }, {
   suit: '6 of Clubs',
   value: 6,
-  img: '6C.png'
+  img: 'PNG/6C.png'
 }, {
   suit: '6 of Diamonds',
   value: 6,
-  img: '6D.png'
+  img: 'PNG/6D.png'
 }, {
   suit: '6 of Hearts',
   value: 6,
-  img: '6H.png'
+  img: 'PNG/6H.png'
 }, {
   suit: '6 of Spades',
   value: 6,
-  img: '6S.png'
+  img: 'PNG/6S.png'
 }, {
   suit: '7 of Clubs',
   value: 7,
-  img: '7C.png'
+  img: 'PNG/7C.png'
 }, {
   suit: '7 of Diamonds',
   value: 7,
-  img: '7D.png'
+  img: 'PNG/7D.png'
 }, {
   suit: '7 of Hearts',
   value: 7,
-  img: '7H.png'
+  img: 'PNG/7H.png'
 }, {
   suit: '7 of Spades',
   value: 7,
-  img: '7S.png'
+  img: 'PNG/7S.png'
 }, {
   suit: '8 of Clubs',
   value: 8,
-  img: '8S.png'
+  img: 'PNG/8S.png'
 }, {
   suit: '8 of Diamonds',
   value: 8,
-  img: '8D.png'
+  img: 'PNG/8D.png'
 }, {
   suit: '8 of Hearts',
   value: 8,
-  img: '8H.png'
+  img: 'PNG/8H.png'
 }, {
   suit: '8 of Spades',
   value: 8,
-  img: '8S.png'
+  img: 'PNG/8S.png'
 }, {
   suit:'9 of Clubs',
   value: 9,
-  img: '9C.png'
+  img: 'PNG/9C.png'
 }, {
 	suit: '9 of Diamonds',
 	value: 9,
-	img: '9D.png'
+	img: 'PNG/9D.png'
 }, {
   suit: '9 of Hearts',
   value: 9,
-  img: '9H.png'
+  img: 'PNG/9H.png'
 }, {
   suit: '9 of Spades',
   value: 9,
-  img: '9S.png'
+  img: 'PNG/9S.png'
 }, {
   suit: '11 Ace of Clubs',
   value: 11,
-  img: 'AC.png'
+  img: 'PNG/AC.png'
 }, {
   suit: '11 Ace of Diamonds',
   value: 11,
-  img: 'AD.png'
+  img: 'PNG/AD.png'
 }, {
   suit:'11 Ace of Hearts',
   value: 11,
-  img: 'AH.png'
+  img: 'PNG/AH.png'
 }, {
  suit: '11 Ace of Spades',
  value: 11,
- img: 'AS.png'
+ img: 'PNG/AS.png'
 }, {
   suit: '10 Jack of Clubs',
   value: 10,
-  img: 'JC.png'
+  img: 'PNG/JC.png'
 }, {
   suit: '10 Jack of Diamonds',
   value: 10,
-  img: 'JD.png'
+  img: 'PNG/JD.png'
 }, {
   suit:'10 Jack of Hearts',
   value: 10,
-  img: 'JH.png'
+  img: 'PNG/JH.png'
 }, {
   suit: '10 Jack of Spades',
   value: 10,
-  img: 'JS.png'
+  img: 'PNG/JS.png'
 }, {
  suit: '10 King of Clubs',
  value: 10,
- img: 'KC.png'
+ img: 'PNG/KC.png'
 }, {
   suit: '10 King of Diamonds',
   value: 10,
-  img: 'KD.png'
+  img: 'PNG/KD.png'
 }, {
   suit: '10 King of Hearts',
   value: 10,
-  img: 'KH.png'
+  img: 'PNG/KH.png'
 }, {
   suit: '10 Kind of Spades',
   value: 10,
-  img: 'KS.png'
+  img: 'PNG/KS.png'
 }, {
   suit: '10 Queen of Clubs',
   value: 10,
-  img: 'QC.png'
+  img: 'PNG/QC.png'
 }, {
   suit: '10 Queen of Diamonds',
   value: 10,
-  img: 'QD.png'
+  img: 'PNG/QD.png'
 }, {
   suit: '10 Queen of Hearts',
   value: 10,
-  img: 'QH.png'
+  img: 'PNG/QH.png'
 }, {
   suit:'10 Queen of Spades',
   value: 10,
-  img: '/QS.png'
+  img: 'PNG/QS.png'
 }
 
 ]
@@ -246,8 +246,9 @@ const player = {
 		console.log('You have been dealt a ' + cardId[card].suit);
 		this.hand.push(cardId[card]); // I am removing the card from the cardId class. (Maybe I could name this arrayCardDeck?)deck as well - and placing it in the hand
 		cardId.splice(card, 1)[0]; //taking them out of the array
-		 $('#yourCards').append(cardId[card].img);
-		 console.log(cardId[card].img);
+		let image = document.createElement('img');
+		image.src = this.hand[i].img;
+		$('#yourCards').append(image);
 	    }
 	},  
 	sum(){
@@ -262,18 +263,21 @@ const player = {
 	    const sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
 	    let newSum; // newSum was called here so I could call it later
 	    	
-	    for (let i = 0; i<1; i++){
+	    for (let i = 0; i < 1; i++){
 	    	let hit = Math.floor(Math.random() * cardId.length);
 	    	console.log('You have been dealt a ' + cardId[hit].suit);
 	    	this.hand.push(cardId[hit]); //take the random card for hit 
 	    	cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
 	    	newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
 			console.log('Your hand total is ' + newSum);
-			$('#yourCards').append(cardId[hit].img);
+			let image = document.createElement('img');
+			image.src = this.hand[i].img;
+			$('#yourCards').append(image);
 	    	} if (newSum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    		//when I run the game, this runs and should end the game
 	    		console.log('You have busted');
 	    		return console.log('Dealer wins');
+	    	
 	    	}
 	    }
 }
@@ -287,9 +291,10 @@ const dealer = {
 		    let card = Math.floor(Math.random() * cardId.length);
 		    console.log('The dealer has been dealt a ' + cardId[card].suit); 
 		    this.hand.push(cardId[card]);
-		    cardId.splice(card, 1)[0]; 
-		    $('#dealerCards').append(cardId[card].img);
-		 console.log(cardId[card].img);
+		    // cardId.splice(card, 1)[0]; 
+		   let image = document.createElement('img');
+			image.src = this.hand[i].img;
+			$('#dealerCards').append(image);
 	    }
 	},
 	sum(){
@@ -302,14 +307,16 @@ const dealer = {
 		} else if (sum >= 17){
 			console.log('The dealer is staying!!!');
 		} else if (sum < 17){
-	    	for (let i = 0; i<1; i++){
+	    	for (let i = 0; i < 1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
-	    		cardId.splice(this.hand, 1)[0];
+	    		// cardId.splice(this.hand, 1)[0];
 	    		newSum = parseInt(sum + cardId[hit].value);
 	    		console.log('The dealers total hand is now ' + newSum);
-	    		$('#dealerCards').append(cardId[hit].img);
+	    		let image = document.createElement('img');
+				image.src = this.hand[i].img;
+				$('#dealerCards').append(image);
 	    	}
 		}
 		if (newSum > 21){
@@ -320,17 +327,17 @@ const dealer = {
 	}
 }
 
-// const compareScore = () =>{
+const compareScore = () =>{
 
-// if (dealer.total > player.total || dealer.newTotal > player.newTotal || dealer.total > player.newTotal || dealer.newTotal > player.total){
-// 	console.log('The dealer has won this round.')
-// } else if (dealer.total < player.total || dealer.newTotal < player.newTotal || dealer.total < player.newTotal || dealer.newTotal < player.total){
-// 	console.log('You have won the round!');
-// } else if (dealer.total === player.total || dealer.newTotal === player.newTotal || dealer.total === dealer.newTotal || dealer.newTotal === player.total){
-// 	console.log('Push');
-// }
+if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
+	console.log('The dealer has won this round.')
+} else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
+	console.log('You have won the round!');
+} else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
+	console.log('Push');
+}
 
-// }
+}
 
 
 
@@ -346,6 +353,8 @@ const startGame = () => {
 	$('#hitBtn').on('click', function() {
 		player.hit();
 	});
+
+	compareScore();
 
 }
 

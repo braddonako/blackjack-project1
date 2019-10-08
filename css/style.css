@@ -8,7 +8,10 @@ body {
 	justify-content: space-between;
 
 }
-
+img {
+	height: 125px;
+	width: 75px;
+}
 
 #rules {
 	font-size: 12px;
