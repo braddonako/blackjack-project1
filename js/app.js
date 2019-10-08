@@ -1,10 +1,19 @@
-// 1)create a deck x
-// 2) write a function to shuffle the deck x
-// 3) write a function to deal the cards to each player. x
-// 4) write a function to for hit and stay. Porbably with jquery. If the button is pressed,
-// they will be dealt another card x -- 
-// 5) Computer player will automatically hit until they are over 17 or bust
-// 6) We need a function that will reset the game after a round is
+// ||x at the end means I have completed the task and have it working
+
+// 1)create a deck ||x
+// 2) write a function to shuffle the deck ||x
+// 3) write a function to deal the cards to each player. ||x
+// 4) write a function to for hit and stand. Probably with jquery??  If the button is pressed,
+// they will be dealt another card x -- // use jQuery with a timer,(setInterval) if the timer is not pressed, it is player will stay.
+//This needs to be a button..?
+// ?? same timer for the stand button...
+
+// 5) Dealer will automatically hit until they are over 17 or bust // I have written this fuction for both the dealer||x
+// 6) Options for the player to hit or stand... I have written code below, but it continues to hit even if I type stand in alert
+//this will be a button at somepoint, that when clicked will stand.
+// 6b
+// 6c) We need a function that will reset the game after a round is
+
 
 const cardId = [
 {
@@ -219,36 +228,41 @@ const cardId = [
 
 ]
 
-const player = { 
+const player = { // can I make a new class off of this for the dealer??? // maybe not... for DRY 
 	name: 'Brad',
 	hand: [],
-	deal(){ // this will shuffle the deck, as well as giving the player two random cards
+	deal(){ // this will shuffle the deck, as well as give the player two random cards
+		// I looped through my cards array, and pushed two cards from it  into the hand array on line 233.
+		// this way the player can access it from the global scope  
+		// This is where I could use jQuery?
 		for (let i = 0; i < 2; i++){
 		let card = Math.floor(Math.random() * cardId.length); //push into a new array === current hand
 		console.log('You have been dealt a ' + cardId[card].suit);
-		this.hand.push(cardId[card]);
-		cardId.splice(card, 1)[0]; 
+		this.hand.push(cardId[card]); // I am removing the card from the cardId class. (Maybe I could name this arrayCardDeck?)deck as well - and placing it in the hand
+		cardId.splice(card, 1)[0]; //taking them out of the array
 	    }
 	},  
 	    sum(){
-	    	const sum = this.hand[0].value + this.hand[1].value;
-	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?');
+	    	const sum = this.hand[0].value + this.hand[1].value; // This is the sum of the two cards that were dealed
+	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?'); // 
 	    	if (sum === 21){
 			console.log('The dealer has a Blackjack');
 			return;
 		}
 	    },
 	    hit(){
-	    	const sum = this.hand[0].value + this.hand[1].value;
-	    	let newSum;
+	    	const sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
+	    	let newSum; // newSum was called here so I could call it later
+	    	
 	    	for (let i = 0; i<1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('You have been dealt a ' + cardId[hit].suit);
-	    		this.hand.push(cardId[hit]);
-	    		cardId.splice(this.hand, 1)[0];
-	    		newSum = parseInt(sum + cardId[hit].value);
-	    		console.log('Your hand total is ' + newSum)
-	    	} if (newSum > 21){
+	    		this.hand.push(cardId[hit]); //take the random card for hit 
+	    		cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
+	    		newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
+	    		console.log('Your hand total is ' + newSum);
+	    	} if (newSum > 21){ // this says the dealer has busted if his cards are over 21 || 
+	    		//when I run the game, this runs and should end the game
 	    		console.log('You have busted');
 	    		// return console.log('dealer wins');
 	    	}
@@ -295,10 +309,8 @@ const dealer = {
 	    	
 		} 
 	}
-}
-
-
-const startGame = () => {
+},
+startGame = () => {
 player.deal();
 player.sum();
 prompt('Do you want to hit or stand?');
@@ -310,17 +322,15 @@ if ('Hit' || "hit"){
 dealer.deal();
 dealer.sum();
 
+
 }
+
+
 
 startGame();
 
 
-
-
-
-
-
-
+// startGame();
 
 // if (dealer.total > player.total || dealer.newTotal > player.newTotal || dealer.total > player.newTotal || dealer.Newtotal > player.total){
 // 	console.log('The dealer has won this round.')
@@ -329,3 +339,13 @@ startGame();
 // } else if (dealer.total === player.total || dealer.newTotal === player.newTotal){
 // 	console.log('Push');
 // }
+
+
+
+
+
+
+
+
+
+

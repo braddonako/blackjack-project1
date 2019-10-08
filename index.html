@@ -2,21 +2,34 @@
 <html>
 <head>
 	<title>Brad's blackjack Game</title>
+	<link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
 </head>
 <body>
-	<h1>Brad's BlackJack Game</h1>
+
+	<header>$$$ Blackjack JavaScript $$$</header>
+	<main>
+		<nav>Rules</nav>
+		<section>Welcome!</section>
+		
+		<aside>
+			<input type="button" class='btn' value='hit' onClick='hit()'>
+			<input type="button" class='btn' value='stay' onClick='stay()'>
+			<input type='button' class='btn' value='deal' onClick='deal()'>
+			<h3>Player's Score
+				<span id='playerScore'>0</span>
+			</h3>
+			<h3>Dealer's Score
+				<span id='dealerScore'>0</span>
+			</h3>
+		</aside>
+	
+	</main>
+
+	<footer>Brad Donakowski</footer>
 	<!-- <input type="button" class='btn' value='start' onClick='start()'> -->
-	<input type="button" class='btn' value='hit' onClick='hit()'>
-	<input type="button" class='btn' value='stay' onClick='stay()'>
-
-	<div id ='players' class = 'players'></div>
-
-	<div id='deck' class='deck'>
-		<div class='cards' id='deckcount'>52</div>
-		<div class='status' id ='status'></div>
-	</div>
+	
 
 	<div class='clear'></div>
 

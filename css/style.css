@@ -1,4 +1,68 @@
-h1 {
+body {
+	background: #D99E0D;
+	min-height: 100vh;
+	margin: 0 auto;
+	font-family: 'Lobster', cursive;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+}
+
+#rules {
+	font-size: 12px;
+}
+
+h3 {
+	font-size: 15px;
+}
+
+header, footer {
+	background-color: #D99E0D;
+	color: #0AA625;
+	width: 100%;
 	text-align: center;
-	color: red;
+	
+}
+header {
+	font-size: 3em;
+	line-height: 100px;
+	font-family: 'Lobster', cursive;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+footer {
+	line-height: 50px;
+}
+
+main {
+	flex-grow: 1;
+	background: white;
+	display: flex;
+	justify-content: space-around;
+}
+
+section, nav, aside {
+	flex-basis: 100px;
+	width: 600px;
+	background: url(https://i.imgur.com/oJXXnv5.jpg);
+	color: #D99E0D;
+	font-size: 2em;
+	margin: 5px;
+	text-align: center;
+	line-height: 100px;
+}
+
+section {
+	flex-grow: 1;
+}
+
+@media screen and (max-width: 600px){
+	main {
+		flex-direction: column;
+	}
+
+	section {
+		order: -1;
+	}
 }
