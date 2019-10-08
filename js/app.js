@@ -29,7 +29,7 @@ const cardId = [
 },{
   suit: '10 of Hearts',
   value: 10,
-  img: '10H.png'
+  img: 'PNG/10H.png'
 }, {
   suit: '10 of Spades',
   value: 10,
@@ -229,7 +229,9 @@ const cardId = [
 }
 
 ]
-
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
 
 const player = { 
 	name: 'Brad',
@@ -323,20 +325,24 @@ const dealer = {
 	    		 return;
 	    	
 		}
+	},
+	stay(){
+		// need something here to end the turn
+		// even need something to end the game. I am super close
 	}
 }
 
-// const compareScore = () =>{
+const compareScore = () =>{
 
-// if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
-// 	console.log('The dealer has won this round.')
-// } else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
-// 	console.log('You have won the round!');
-// } else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
-// 	console.log('Push');
-// }
+if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
+	console.log('The dealer has won this round.')
+} else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
+	console.log('You have won the round!');
+} else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
+	console.log('Push');
+}
 
-// }
+}
 
 
 
@@ -353,11 +359,12 @@ const startGame = () => {
 		player.hit();
 	});
 
-	compareScore();
+	
 
 }
 
 startGame();
+compareScore();
 
 
 
