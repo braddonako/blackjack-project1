@@ -14,6 +14,8 @@
 // 6b
 // 6c) We need a function that will reset the game after a round is
 
+//if i bust game over
+
 
 const cardId = [
 {
@@ -309,23 +311,23 @@ const dealer = {
 	    	
 		} 
 	}
-},
-startGame = () => {
+}
+
+
+
+
+const startGame = () => {
 player.deal();
 player.sum();
 prompt('Do you want to hit or stand?');
 if ('Hit' || "hit"){
 	player.hit();
 } else if ('stand' || 'Stand'){
-	player.stand();
+	player.stand(); // need to add another option for hit. Going to add this in the morning
 }
 dealer.deal();
 dealer.sum();
-
-
 }
-
-
 
 startGame();
 
