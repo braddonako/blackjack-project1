@@ -255,7 +255,7 @@ const player = {
 	    	const sum = this.hand[0].value + this.hand[1].value; // This is the sum of the two cards that were dealed
 	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?'); // 
 	    	if (sum === 21){
-			console.log('The dealer has a Blackjack');
+			console.log('You have a Blackjack');
 			return;
 		}
 	    },
@@ -271,13 +271,12 @@ const player = {
 	    	newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
 			console.log('Your hand total is ' + newSum);
 			let image = document.createElement('img');
-			image.src = this.hand[i].img;
+			image.src = cardId[hit].img;
 			$('#yourCards').append(image);
 	    	} if (newSum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    		//when I run the game, this runs and should end the game
 	    		console.log('You have busted');
 	    		return console.log('Dealer wins');
-	    	
 	    	}
 	    }
 }
@@ -315,7 +314,7 @@ const dealer = {
 	    		newSum = parseInt(sum + cardId[hit].value);
 	    		console.log('The dealers total hand is now ' + newSum);
 	    		let image = document.createElement('img');
-				image.src = this.hand[i].img;
+				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
 	    	}
 		}
@@ -327,17 +326,17 @@ const dealer = {
 	}
 }
 
-const compareScore = () =>{
+// const compareScore = () =>{
 
-if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
-	console.log('The dealer has won this round.')
-} else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
-	console.log('You have won the round!');
-} else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
-	console.log('Push');
-}
+// if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
+// 	console.log('The dealer has won this round.')
+// } else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
+// 	console.log('You have won the round!');
+// } else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
+// 	console.log('Push');
+// }
 
-}
+// }
 
 
 
