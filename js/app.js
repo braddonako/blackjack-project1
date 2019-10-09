@@ -264,8 +264,7 @@ const player = {
 		// }
 	    },
 	thisHit(){
-	    this.sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
-	    let newSum; // newSum was called here so I could call it later
+	    // this.sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
 	    	
 	    for (let i = 0; i < 1; i++){
 	    	let hit = Math.floor(Math.random() * cardId.length);
@@ -304,10 +303,10 @@ const dealer = {
 	findSum(){
 		this.sum = this.hand[0].value + this.hand[1].value;
 		console.log(this.sum + ' is the total of the dealer two cards.');
-		// if (sum === 21){
-		// 	console.log('The dealer has a Blackjack');
-		// 	return;
-		// } else 
+		},
+	thisHit(){
+		this.sum = this.hand[0].value + this.hand[1].value;
+
 		if (this.sum >= 17){
 			console.log('The dealer is staying!!!');
 		} else if (this.sum < 17){
@@ -323,8 +322,6 @@ const dealer = {
 				$('#dealerCards').append(image);
 	    	} if (this.sum > 21){
 	    		alert('The dealer has busted. You win');
-	    		 return;
-	    	
 		}
 	}
 	}
@@ -363,21 +360,20 @@ const startGame = () => {
 		});
 	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
+		dealer.thisHit();
 	});
-
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand;
 		console.log('You are staying');
+		if (dealer.sum < 18){
+			dealer.thisHit();
+		}
 		compareScore();
 		});
 	$('#resetBtn').on('click', function(){
 		location.reload();
 	})
 	}
-
-
-
-	
 
 startGame();
 // compareScore();
