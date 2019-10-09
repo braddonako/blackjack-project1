@@ -283,25 +283,6 @@ const player = {
 	    		alert('You have busted, dealer wins');
 	    	}
 	    }
-	  //   hitAgain(){ // added an option for the player to hit again. This way if they are still below the computer
-	  //   	// they have the option to try to get closer to 21... It isnt adding correctly yet
-	  //   	let newSum2;
-	  //   	for (let i = 0; i < 1; i++){
-	  //   	let hit = Math.floor(Math.random() * cardId.length);
-	  //   	console.log('You have been dealt a ' + cardId[hit].suit);
-	  //   	this.hand.push(cardId[hit]); //take the random card for hit 
-	  //   	// cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
-	  //   	newSum2 = parseInt(player.sum + cardId[hit].value); 
-			// console.log('Your hand total is ' + newSum2);
-			// let image = document.createElement('img');
-			// image.src = cardId[hit].img;
-			// $('#yourCards').append(image);
-	  //   	} if (newSum2 > 21){ // this says the dealer has busted if his cards are over 21 || 
-	  //   		//when I run the game, this runs and should end the game
-	  //   		console.log('You have busted');
-	  //   		return console.log('Dealer wins');
-	  //   	}
-	  //   }
 }
 
 
@@ -347,38 +328,14 @@ const dealer = {
 		}
 	}
 	}
-	// hitAgain(){
-	// 	let newSum;
-	// 	if (dealer.sum < 17){
-	//     		let hit = Math.floor(Math.random() * cardId.length);
-	//     		console.log('The dealer hit again. Their new card is ' + cardId[hit].suit);
-	//     		this.hand.push(cardId[hit]);
-	//     		// cardId.splice(this.hand, 1)[0];
-	//     		newSum = parseInt(dealer.sum + cardId[hit].value);
-	//     		console.log('The dealers total hand is now ' + newSum);
-	//     		let image = document.createElement('img');
-	// 			image.src = cardId[hit].img;
-	// 			$('#dealerCards').append(image);
-	//     	}
-	//     	if (newSum > 21){
-	//     		console.log('The dealer has busted.');
-	//     		 return;
-	//     	}
-	// }
-
-		// need something here to end the turn // let stay === hand next turn
-		// even need something to end the game. I am super close
-}
-
-const endGame = () => {
-	end();
+	
 }
 
 const checkForBlackJack = () => {
  if (dealer.sum === 21) {
- 	console.log('Dealer has a BlackJack, dealer wins!');
+ 	alert('Dealer has a BlackJack, dealer wins!');
  } else if (player.sum === 21){
- 	console.log('You have a BlackJack, you win!')
+ 	alert('You have a BlackJack, you win!')
  }
 }
 
@@ -413,6 +370,9 @@ const startGame = () => {
 		console.log('You are staying');
 		compareScore();
 		});
+	$('#resetBtn').on('click', function(){
+		location.reload();
+	})
 	}
 
 
@@ -429,6 +389,48 @@ startGame();
 // if (player.startingSum < 21){
 	// $('#hitBtn').on('click', function() {
 	// 	player.hitAgain();
+
+// dealer	// hitAgain(){
+	// 	let newSum;
+	// 	if (dealer.sum < 17){
+	//     		let hit = Math.floor(Math.random() * cardId.length);
+	//     		console.log('The dealer hit again. Their new card is ' + cardId[hit].suit);
+	//     		this.hand.push(cardId[hit]);
+	//     		// cardId.splice(this.hand, 1)[0];
+	//     		newSum = parseInt(dealer.sum + cardId[hit].value);
+	//     		console.log('The dealers total hand is now ' + newSum);
+	//     		let image = document.createElement('img');
+	// 			image.src = cardId[hit].img;
+	// 			$('#dealerCards').append(image);
+	//     	}
+	//     	if (newSum > 21){
+	//     		console.log('The dealer has busted.');
+	//     		 return;
+	//     	}
+	// }
+
+//THis is for the player		// need something here to end the turn // let stay === hand next turn
+		// even need something to end the game. I am super close
+
+			  //   hitAgain(){ // added an option for the player to hit again. This way if they are still below the computer
+	  //   	// they have the option to try to get closer to 21... It isnt adding correctly yet
+	  //   	let newSum2;
+	  //   	for (let i = 0; i < 1; i++){
+	  //   	let hit = Math.floor(Math.random() * cardId.length);
+	  //   	console.log('You have been dealt a ' + cardId[hit].suit);
+	  //   	this.hand.push(cardId[hit]); //take the random card for hit 
+	  //   	// cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
+	  //   	newSum2 = parseInt(player.sum + cardId[hit].value); 
+			// console.log('Your hand total is ' + newSum2);
+			// let image = document.createElement('img');
+			// image.src = cardId[hit].img;
+			// $('#yourCards').append(image);
+	  //   	} if (newSum2 > 21){ // this says the dealer has busted if his cards are over 21 || 
+	  //   		//when I run the game, this runs and should end the game
+	  //   		console.log('You have busted');
+	  //   		return console.log('Dealer wins');
+	  //   	}
+	  //   }
 
 
 
