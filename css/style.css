@@ -16,13 +16,17 @@
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: bold;
-	color: black;
+	color: #0AA625;
 	background-color: #D99E0D;
 	margin: 15px;
 }
 
 #yourCards, #dealerCards {
 	text-transform: uppercase;
+}
+
+#goodLuck {
+	font-size: 2em;
 }
 
 body {
