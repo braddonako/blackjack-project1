@@ -7,7 +7,7 @@
 	color: #D99E0D;
 }
 
-#hitBtn, #stayBtn, #dealBtn {
+#hitBtn, #stayBtn, #dealBtn , #resetBtn{
 	display: flex;
 	justify-content: space-around;
 	border-radius: 15px;

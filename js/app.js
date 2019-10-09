@@ -280,8 +280,7 @@ const player = {
 			$('#yourCards').append(image);
 	    	} if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    		//when I run the game, this runs and should end the game
-	    		console.log('You have busted');
-	    		return console.log('Dealer wins');
+	    		alert('You have busted, dealer wins');
 	    	}
 	    }
 	  //   hitAgain(){ // added an option for the player to hit again. This way if they are still below the computer
@@ -342,7 +341,7 @@ const dealer = {
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
 	    	} if (this.sum > 21){
-	    		console.log('The dealer has busted.');
+	    		alert('The dealer has busted. You win');
 	    		 return;
 	    	
 		}
@@ -386,14 +385,12 @@ const checkForBlackJack = () => {
 
 
 const compareScore = () =>{
-	console.log('Compare score');
-	console.log
-if (player.sum === dealer.sum || player.hit === dealer.sum){
-	console.log();
-} else if (player.sum > dealer.sum || player.hit > dealer.sum){
-	console.log('You win the round!');
-} else if (dealer.sum > player.sum || dealer.sum > player.hit){
-	console.log('The dealer has won this round.');
+if (player.sum === dealer.sum){
+	alert('The score is the same, it is a push');
+} else if (player.sum > dealer.sum){
+	alert('You have won the round!');
+} else if (dealer.sum > player.sum){
+	alert('The dealer has won this round.');
 }
 }
 
@@ -410,10 +407,6 @@ const startGame = () => {
 	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
 	});
-	$('#stayBtn').on('click', function(){ // Player keeps the cards in their hand
-			let stay = player.hand;
-			console.log('You are staying');
-		});
 
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand;
