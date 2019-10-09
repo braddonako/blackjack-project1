@@ -237,6 +237,7 @@ $(function () {
 const player = { 
 	name: 'Brad',
 	hand: [],
+	sum: 0,
 	deal(){ // this will shuffle the deck, as well as give the player two random cards
 		// I looped through my cards array, and pushed two cards from it  into the hand array on line 233.
 		// this way the player can access it from the global scope  
@@ -254,16 +255,16 @@ const player = {
 		$('#yourCards').append(image);
 	    }
 	},  
-	sum(){
-	    	const sum = this.hand[0].value + this.hand[1].value; // This is the sum of the two cards that were dealed
-	    	console.log(sum + ' is the score of your two cards. Do you want to hit or stay?'); // 
-	    	if (sum === 21){
-			console.log('You have a Blackjack');
-			return;
-		}
+	findSum(){
+			this.sum = this.hand[0].value + this.hand[1].value; // This is the sum of the two cards that were dealed
+	    	console.log(this.sum + ' is the score of your two cards. Do you want to hit or stay?'); // 
+	  //   	if (sum === 21){ // taking this out for now - going to write a seperate function
+			// console.log('You have a Blackjack');
+			// return;
+		// }
 	    },
-	hit(){
-	    const sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
+	thisHit(){
+	    this.sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
 	    let newSum; // newSum was called here so I could call it later
 	    	
 	    for (let i = 0; i < 1; i++){
@@ -272,12 +273,12 @@ const player = {
 	    	this.hand.push(cardId[hit]); //take the random card for hit 
 	    	// cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck -- taking this out for now. Makes dealing the cards
 	    	// a little funky
-	    	newSum = parseInt(sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
-			console.log('Your hand total is ' + newSum);
+	    	this.sum = parseInt(this.sum + cardId[hit].value); // If I remembered correctly, this would turn integers into numbers(I tried it and it worked)
+			console.log('Your hand total is ' + this.sum);
 			let image = document.createElement('img');
 			image.src = cardId[hit].img;
 			$('#yourCards').append(image);
-	    	} if (newSum > 21){ // this says the dealer has busted if his cards are over 21 || 
+	    	} if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    		//when I run the game, this runs and should end the game
 	    		console.log('You have busted');
 	    		return console.log('Dealer wins');
@@ -308,6 +309,7 @@ const player = {
 const dealer = {
 	name: 'dealer',
 	hand: [],
+	sum: 0,
 	deal(){ // same function as the player deal. This will give the computer two random cards
 		for (let i = 0; i < 2; i++){
 		    let card = Math.floor(Math.random() * cardId.length);
@@ -319,27 +321,27 @@ const dealer = {
 			$('#dealerCards').append(image);
 	    }
 	},
-	sum(){
-		const sum = this.hand[0].value + this.hand[1].value;
-		let newSum;
-		console.log(sum + ' is the total of the dealer two cards.');
-		if (sum === 21){
-			console.log('The dealer has a Blackjack');
-			return;
-		} else if (sum >= 17){
+	findSum(){
+		this.sum = this.hand[0].value + this.hand[1].value;
+		console.log(this.sum + ' is the total of the dealer two cards.');
+		// if (sum === 21){
+		// 	console.log('The dealer has a Blackjack');
+		// 	return;
+		// } else 
+		if (this.sum >= 17){
 			console.log('The dealer is staying!!!');
-		} else if (sum < 17){
+		} else if (this.sum < 17){
 	    	for (let i = 0; i < 1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
 	    		// cardId.splice(this.hand, 1)[0];
-	    		newSum = parseInt(sum + cardId[hit].value);
-	    		console.log('The dealers total hand is now ' + newSum);
+	    		this.sum = parseInt(this.sum + cardId[hit].value);
+	    		console.log('The dealers total hand is now ' + this.sum);
 	    		let image = document.createElement('img');
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
-	    	} if (newSum > 21){
+	    	} if (this.sum > 21){
 	    		console.log('The dealer has busted.');
 	    		 return;
 	    	
@@ -370,7 +372,29 @@ const dealer = {
 }
 
 const endGame = () => {
+	end();
+}
 
+const checkForBlackJack = () => {
+ if (dealer.sum === 21) {
+ 	console.log('Dealer has a BlackJack, dealer wins!');
+ } else if (player.sum === 21){
+ 	console.log('You have a BlackJack, you win!')
+ }
+}
+
+
+
+const compareScore = () =>{
+	console.log('Compare score');
+	console.log
+if (player.sum === dealer.sum || player.hit === dealer.sum){
+	console.log();
+} else if (player.sum > dealer.sum || player.hit > dealer.sum){
+	console.log('You win the round!');
+} else if (dealer.sum > player.sum || dealer.sum > player.hit){
+	console.log('The dealer has won this round.');
+}
 }
 
 
@@ -378,51 +402,27 @@ const endGame = () => {
 const startGame = () => {
 	$('#dealBtn').on('click', function() { // The deal button will initiate the two card. Then give the sum in the console
 		player.deal();
-		player.sum();
+		player.findSum();
 		dealer.deal();
-		dealer.sum();
-		if (dealer.sum === 21 || player.sum === 21){
-			return 'Blackjack! Game over';
-		} else if (dealer.sum > 21){
-			console.log('Dealer has busted. Player wins!')
-		}
-	});
-
+		dealer.findSum();
+		checkForBlackJack();
+		});
 	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
-		player.hit();
+		player.thisHit();
 	});
 	$('#stayBtn').on('click', function(){ // Player keeps the cards in their hand
 			let stay = player.hand;
 			console.log('You are staying');
 		});
-	
-	if (player.startingSum < 21){
-	$('#hitBtn').on('click', function() {
-		player.hitAgain();
+
 	$('#stayBtn').on('click', function(){
-		let stay = this.hand;
+		let stay = player.hand;
 		console.log('You are staying');
-		if (stay === true){
-			console.log('Who is there ')
-		}
-	});
-	});
-}
+		compareScore();
+		});
+	}
 
 
-}
-
-// const compareScore = () =>{
-
-// if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
-// 	console.log('The dealer has won this round.');
-// } else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
-// 	console.log('You have won the round!');
-// } else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
-// 	console.log('Push');
-// }
-
-// }
 
 	
 
@@ -433,7 +433,9 @@ startGame();
 
 
 
-
+// if (player.startingSum < 21){
+	// $('#hitBtn').on('click', function() {
+	// 	player.hitAgain();
 
 
 
