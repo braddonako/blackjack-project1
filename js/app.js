@@ -233,6 +233,7 @@ $(function () {
   $('[data-toggle="popover"]').popover()
 })
 
+
 const player = { 
 	name: 'Brad',
 	hand: [],
@@ -327,30 +328,32 @@ const dealer = {
 		}
 	},
 	stay(){
-		// need something here to end the turn
+		// need something here to end the turn // let stay === hand next turn
 		// even need something to end the game. I am super close
 	}
 }
 
-const compareScore = () =>{
+// const compareScore = () =>{
 
-if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
-	console.log('The dealer has won this round.')
-} else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
-	console.log('You have won the round!');
-} else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
-	console.log('Push');
-}
+// if (dealer.sum > player.sum || dealer.newSum > player.newSum || dealer.total > player.newSum || dealer.newSum > player.total){
+// 	console.log('The dealer has won this round.')
+// } else if (dealer.total < player.total || dealer.newSum < player.newSum || dealer.total < player.newSum || dealer.newSum < player.total){
+// 	console.log('You have won the round!');
+// } else if (dealer.total === player.total || dealer.newSum === player.newSum || dealer.total === dealer.newSum || dealer.newSum === player.total){
+// 	console.log('Push');
+// }
 
-}
+// }
 
 
 
 
 const startGame = () => {
+	// for (let i = 0; i < 50; i++){
 	$('#dealBtn').on('click', function() {
 		player.deal();
 		player.sum();
+	// $('.hitOrStand').text('Hit or stand?')
 		dealer.deal();
 		dealer.sum();
 	});
@@ -359,12 +362,14 @@ const startGame = () => {
 		player.hit();
 	});
 
-	
-
 }
 
+	
+
+// }
+
 startGame();
-compareScore();
+// compareScore();
 
 
 
