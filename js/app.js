@@ -233,6 +233,8 @@ $(function () {
   $('[data-toggle="popover"]').popover()
 })
 
+$('#score').append('sum()');
+
 
 const player = { 
 	name: 'Brad',
@@ -281,6 +283,26 @@ const player = {
 	    		console.log('You have busted');
 	    		return console.log('Dealer wins');
 	    	}
+	    },
+	    hitAgain(){
+	    	const startingSum = this.hand[0].value + this.hand[1].value + this.hand[2].value;
+	    	console.log('This is the starting sum ->' + startingSum);
+	    	let newSum2;
+	    	for (let i = 0; i < 1; i++){
+	    	let hit = Math.floor(Math.random() * cardId.length);
+	    	console.log('You have been dealt a ' + cardId[hit].suit);
+	    	this.hand.push(cardId[hit]); //take the random card for hit 
+	    	cardId.splice(this.hand, 1)[0]; // remove card from the 52 deck
+	    	newSum2 = parseInt(startingSum + cardId[hit].value); 
+			console.log('Your hand total is ' + newSum2);
+			let image = document.createElement('img');
+			image.src = cardId[hit].img;
+			$('#yourCards').append(image);
+	    	} if (newSum2 > 21){ // this says the dealer has busted if his cards are over 21 || 
+	    		//when I run the game, this runs and should end the game
+	    		console.log('You have busted');
+	    		return console.log('Dealer wins');
+	    	}
 	    }
 }
 
@@ -319,19 +341,75 @@ const dealer = {
 	    		let image = document.createElement('img');
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
-	    	}
-		}
-		if (newSum > 21){
+	    	} if (newSum > 21){
 	    		console.log('The dealer has busted.');
 	    		 return;
 	    	
 		}
+	}
 	},
-	stay(){
+	hitAgain(){
+		if (newSum < 17){
+	    		let hit = Math.floor(Math.random() * cardId.length);
+	    		console.log('The dealer hit again. Their new card is ' + cardId[hit].suit);
+	    		this.hand.push(cardId[hit]);
+	    		// cardId.splice(this.hand, 1)[0];
+	    		newSum = parseInt(sum + cardId[hit].value);
+	    		console.log('The dealers total hand is now ' + newSum);
+	    		let image = document.createElement('img');
+				image.src = cardId[hit].img;
+				$('#dealerCards').append(image);
+	    	}if (newSum > 21){
+	    		console.log('The dealer has busted.');
+	    		 return;
+	    	
+		}
+	}
+
 		// need something here to end the turn // let stay === hand next turn
 		// even need something to end the game. I am super close
-	}
 }
+
+
+
+
+
+const startGame = () => {
+	$('#dealBtn').on('click', function() {
+		player.deal();
+		player.sum();
+	// $('.hitOrStand').text('Hit or stand?')
+		dealer.deal();
+		dealer.sum();
+	});
+
+	$('#hitBtn').on('click', function() {
+		player.hit();
+	});
+	$('#stayBtn').on('click', function(){
+			let stay = this.hand;
+			console.log('You are staying');
+		});
+	if (player.startingSum < 21){
+	$('#hitBtn').on('click', function() {
+		player.hitAgain();
+	$('#stayBtn').on('click', function(){
+		let stay = this.hand;
+		console.log('You are staying');
+	});
+	});
+}
+
+
+}
+
+	
+
+startGame();
+
+// compareScore();
+
+
 
 // const compareScore = () =>{
 
@@ -344,33 +422,6 @@ const dealer = {
 // }
 
 // }
-
-
-
-
-const startGame = () => {
-	// for (let i = 0; i < 50; i++){
-	$('#dealBtn').on('click', function() {
-		player.deal();
-		player.sum();
-	// $('.hitOrStand').text('Hit or stand?')
-		dealer.deal();
-		dealer.sum();
-	});
-
-	$('#hitBtn').on('click', function() {
-		player.hit();
-	});
-
-}
-
-	
-
-// }
-
-startGame();
-// compareScore();
-
 
 
 

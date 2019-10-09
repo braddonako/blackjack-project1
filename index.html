@@ -11,9 +11,9 @@
 
 	<header>$$$ Blackjack JavaScript $$$</header>
 	<main>
-			<button type="button" id='instructionsBtn' data-toggle="popover" title="Blackjack or 21" data-content="The player closest to 21 wins. Each player will be dealt two cards, and have the option to hit.(if you hit you will receive another card) If you go over 21, it is a bust and the other player wins!" >RULES</button>
+			<button type="button" id='instructionsBtn' data-toggle="popover" title="Blackjack AKA 21" data-content="Beat the dealer. The player closest to 21 wins. Each player will be dealt two cards, and have the option to hit.(if you hit you will receive another card) If you go over 21, it is a bust and the other player wins!" >RULES</button>
 		<section class='hitOrStand'>Welcome!
-			<div id='yourCards'>Your cards</div>
+			<div id='yourCards'>Your cards-<span id='cardCount'>0</span></div>
 			<div id='dealerCards'>Dealer's cards</div>
 		</section>
 
@@ -29,6 +29,8 @@
 			<h3>Dealer's Score
 				<span id='dealerScore'>0</span>
 			</h3>
+			<h3><span id='winner/loser'></span></h3>
+
 		</aside>
 	
 	</main>
