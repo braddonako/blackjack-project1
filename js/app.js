@@ -414,7 +414,7 @@ const startGame = () => {
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand;
 		console.log('You are staying');
-		if (dealer.sum < 20 || player.sum){
+		if (dealer.sum <= 20 || dealer.sum <= player.sum){
 			dealer.thisHit();
 			dealer.hitAgain();
 			checkBust();
