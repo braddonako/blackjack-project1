@@ -369,31 +369,33 @@ const dealer = {
 
 const checkForBlackJack = () => {
  if (dealer.sum === 21) {
- 	alert('Dealer has a BlackJack, dealer wins!');
+ 	alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
+ 	$('#hiddenCard').attr('src', dealer.hand[0].img);
  } else if (player.sum === 21){
- 	alert('You have a BlackJack, you win!')
+ 	alert('You have a BlackJack, you win! Click reset to play again')
+ 	$('#hiddenCard').attr('src', dealer.hand[0].img);
  }
 }
 
 const checkBust = () => {
 	if (dealer.sum > 21){
-	alert('The dealer has busted, you win');
+	alert('The dealer has busted, you win. Click reset to play again');
 } else if (player.sum > 21){
-	alert('You busted. Game over')
+	alert('You busted. Game over. Click reset to play again')
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 } else if (player.sum > 21 && dealer.sum > 21){
-	alert('You have both busted. It is a push.');
+	alert('You have both busted. It is a push. Click round to play again');
 }
 }
 
 
 const compareScore = () =>{
 if (player.sum === dealer.sum){
-	alert('The score is the same, it is a push');
+	alert('The score is the same, it is a push. Click reset to play again');
 } else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
-	alert('You have won the round!');
+	alert('You have won the round! Click reset to play again');
 } else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
-	alert('The dealer has won this round.');
+	alert('The dealer has won this round. Click reset to play again');
 }
 }
 
@@ -414,7 +416,7 @@ const startGame = () => {
 		checkBust();
 	});
 	$('#stayBtn').on('click', function(){
-		let stay = player.hand;
+		let stay = player.hand.sum;
 		console.log('You are staying');
 		if (dealer.sum <= 21 || dealer.sum < player.sum){
 			dealer.thisHit();
