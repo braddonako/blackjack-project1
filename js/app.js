@@ -238,6 +238,7 @@ const player = {
 	name: 'Brad',
 	hand: [],
 	sum: 0,
+	score: 0,
 	deal(){ // this will shuffle the deck, as well as give the player two random cards
 		// I looped through my cards array, and pushed two cards from it  into the hand array on line 233.
 		// this way the player can access it from the global scope  
@@ -277,12 +278,13 @@ const player = {
 			let image = document.createElement('img');
 			image.src = cardId[hit].img;
 			$('#yourCards').append(image);
-	    	} if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
-	    		//when I run the game, this runs and should end the game
-	    		alert('You have busted, dealer wins');
+	    	} 
+	    	// if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
+	    	// 	//when I run the game, this runs and should end the game
+	    	// 	alert('You have busted, dealer wins');
 	    	}
 	    }
-}
+// }
 
 
 const dealer = {
@@ -320,9 +322,10 @@ const dealer = {
 	    		let image = document.createElement('img');
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
-	    	} if (this.sum > 21){
-	    		alert('The dealer has busted. You win');
-		}
+	    	} 
+	 //    	if (this.sum > 21){
+	 //    		alert('The dealer has busted. You win');
+		// }
 	}
 	}
 	
@@ -336,14 +339,21 @@ const checkForBlackJack = () => {
  }
 }
 
+const checkBust = () => {
+	if (dealer.sum > 21){
+	alert('The dealer has busted, you win');
+} else if (player.sum > 21){
+	alert('You busted. Game over')
+}
+}
 
 
 const compareScore = () =>{
 if (player.sum === dealer.sum){
 	alert('The score is the same, it is a push');
-} else if (player.sum > dealer.sum){
+} else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
 	alert('You have won the round!');
-} else if (dealer.sum > player.sum){
+} else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
 	alert('The dealer has won this round.');
 }
 }
@@ -361,12 +371,14 @@ const startGame = () => {
 	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
 		dealer.thisHit();
+		checkBust();
 	});
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand;
 		console.log('You are staying');
-		if (dealer.sum < 18){
+		if (dealer.sum < 20 || player.sum){
 			dealer.thisHit();
+			checkBust();
 		}
 		compareScore();
 		});
