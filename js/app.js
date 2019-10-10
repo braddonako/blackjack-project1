@@ -288,6 +288,9 @@ const player = {
 	    	// 	//when I run the game, this runs and should end the game
 	    	// 	alert('You have busted, dealer wins');
 	    	},
+	    	stay(){
+	    		let stay = this.sum;
+	    	}
 	    }
 // }
 
@@ -341,7 +344,8 @@ const dealer = {
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
 	    	} 
-	    } else if (this.sum >= 17){
+	    } 
+	    else if (this.sum >= player.sum){
 			console.log('The dealer is staying!!!');
 		} 
 	},
@@ -360,7 +364,8 @@ const dealer = {
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
 	    	} 
-	    } else if (this.sum >= 17){
+	    } 
+	    else if (this.sum >= player.sum){
 			console.log('The dealer is staying!!!');
 	}
 	}
@@ -417,15 +422,17 @@ const startGame = () => {
 		});
 	
 	$('#stayBtn').on('click', function(){
-		let stay = player.hand.sum;
 		console.log('You are staying');
-		if (dealer.sum <= 21 || dealer.sum < player.sum){
+		if (dealer.sum < player.sum){
 			dealer.thisHit();
 			dealer.hitAgain();
 			checkBust();
 			compareScore();
 			$('#hiddenCard').attr('src', dealer.hand[0].img);
-		} 
+		} else if (dealer.sum > player.sum){
+			compareScore();
+			$('#hiddenCard').attr('src', dealer.hand[0].img);
+		}
 		});
 	$('#resetBtn').on('click', function(){
 		location.reload();
