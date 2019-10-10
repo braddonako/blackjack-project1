@@ -303,6 +303,7 @@ const dealer = {
 		    this.hand.push(cardId[card]);
 		    // cardId.splice(card, 1)[0]; 
 		   let image = document.createElement('img');
+			image.setAttribute('id', 'hiddenCard');
 			image.src = this.hand[i].img;
 			$('#dealerCards').append(image);
 			$(image).attr('src', '5075a.jpg');
@@ -414,11 +415,12 @@ const startGame = () => {
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand;
 		console.log('You are staying');
-		if (dealer.sum <= 20 || dealer.sum <= player.sum){
+		if (dealer.sum <= 21 || dealer.sum < player.sum){
 			dealer.thisHit();
 			dealer.hitAgain();
 			checkBust();
 			compareScore();
+			$('#hiddenCard').attr('src', dealer.hand[0].img);
 		} 
 		});
 	$('#resetBtn').on('click', function(){
