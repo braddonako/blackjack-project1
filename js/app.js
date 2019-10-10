@@ -405,7 +405,6 @@ if (player.sum === dealer.sum){
 }
 
 
-
 const startGame = () => {
 	$('#dealBtn').one('click', function() { // The deal button will initiate the two card. Then give the sum in the console
 		player.deal();
@@ -430,6 +429,10 @@ const startGame = () => {
 			compareScore();
 			$('#hiddenCard').attr('src', dealer.hand[0].img);
 		} else if (dealer.sum > player.sum){
+			compareScore();
+			$('#hiddenCard').attr('src', dealer.hand[0].img);
+		} else if (dealer.sum === player.sum){
+			dealer.thisHit();
 			compareScore();
 			$('#hiddenCard').attr('src', dealer.hand[0].img);
 		}
