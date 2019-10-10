@@ -402,7 +402,7 @@ if (player.sum === dealer.sum){
 
 
 const startGame = () => {
-	$('#dealBtn').on('click', function() { // The deal button will initiate the two card. Then give the sum in the console
+	$('#dealBtn').one('click', function() { // The deal button will initiate the two card. Then give the sum in the console
 		player.deal();
 		player.findSum();
 		dealer.deal();
