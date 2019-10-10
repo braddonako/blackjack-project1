@@ -230,6 +230,10 @@ const cardId = [
 
 ]
 
+const hiddenCard = [
+	img = "5075a.jpg"
+]
+
 $(function () {
   $('[data-toggle="popover"]').popover()
 });
@@ -283,7 +287,7 @@ const player = {
 	    	// if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    	// 	//when I run the game, this runs and should end the game
 	    	// 	alert('You have busted, dealer wins');
-	    	}
+	    	},
 	    }
 // }
 
@@ -301,8 +305,8 @@ const dealer = {
 		   let image = document.createElement('img');
 			image.src = this.hand[i].img;
 			$('#dealerCards').append(image);
-			$(image).attr('id', 'hideCard');
-			$('#hideCard').append('download.jpg');
+			$(image).attr('src', '5075a.jpg');
+			this.sum = this.hand[0];
 			// $(image).append('hiddenCard');
 	    }
 	},
@@ -339,8 +343,27 @@ const dealer = {
 	    } else if (this.sum >= 17){
 			console.log('The dealer is staying!!!');
 		} 
+	},
+	hitAgain(){
+		this.sum = this.hand[0].value + this.hand[1].value + this.hand[2].value;
+
+		 if (this.sum < 17 || this.sum < player.sum){
+	    	for (let i = 0; i < 1; i++){
+	    		let hit = Math.floor(Math.random() * cardId.length);
+	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
+	    		this.hand.push(cardId[hit]);
+	    		// cardId.splice(this.hand, 1)[0];
+	    		this.sum = parseInt(this.sum + cardId[hit].value);
+	    		console.log('The dealers total hand is now ' + this.sum);
+	    		let image = document.createElement('img');
+				image.src = cardId[hit].img;
+				$('#dealerCards').append(image);
+	    	} 
+	    } else if (this.sum >= 17){
+			console.log('The dealer is staying!!!');
 	}
 	}
+}
 	
 
 const checkForBlackJack = () => {
@@ -393,6 +416,7 @@ const startGame = () => {
 		console.log('You are staying');
 		if (dealer.sum < 20 || player.sum){
 			dealer.thisHit();
+			dealer.hitAgain();
 			checkBust();
 			compareScore();
 		} 
