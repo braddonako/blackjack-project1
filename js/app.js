@@ -380,6 +380,7 @@ const checkBust = () => {
 	alert('The dealer has busted, you win');
 } else if (player.sum > 21){
 	alert('You busted. Game over')
+	$('#hiddenCard').attr('src', dealer.hand[0].img);
 } else if (player.sum > 21 && dealer.sum > 21){
 	alert('You have both busted. It is a push.');
 }
