@@ -300,6 +300,7 @@ const dealer = {
 		   let image = document.createElement('img');
 			image.src = this.hand[i].img;
 			$('#dealerCards').append(image);
+			
 	    }
 	},
 	findSum(){
@@ -309,9 +310,7 @@ const dealer = {
 	thisHit(){
 		this.sum = this.hand[0].value + this.hand[1].value;
 
-		if (this.sum >= 17){
-			console.log('The dealer is staying!!!');
-		} else if (this.sum < 17){
+		 if (this.sum < 17 || this.sum < player.sum){
 	    	for (let i = 0; i < 1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
@@ -323,13 +322,12 @@ const dealer = {
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
 	    	} 
-	 //    	if (this.sum > 21){
-	 //    		alert('The dealer has busted. You win');
-		// }
+	    } else if (this.sum >= 17){
+			console.log('The dealer is staying!!!');
+		} 
 	}
 	}
 	
-}
 
 const checkForBlackJack = () => {
  if (dealer.sum === 21) {
@@ -344,6 +342,8 @@ const checkBust = () => {
 	alert('The dealer has busted, you win');
 } else if (player.sum > 21){
 	alert('You busted. Game over')
+} else if (player.sum > 21 && dealer.sum > 21){
+	alert('You have both busted. It is a push.');
 }
 }
 
@@ -370,7 +370,7 @@ const startGame = () => {
 		});
 	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
-		dealer.thisHit();
+		// dealer.thisHit();
 		checkBust();
 	});
 	$('#stayBtn').on('click', function(){
@@ -384,7 +384,7 @@ const startGame = () => {
 		});
 	$('#resetBtn').on('click', function(){
 		location.reload();
-	})
+	});
 	}
 
 startGame();
