@@ -409,12 +409,13 @@ const startGame = () => {
 		dealer.dealAgain();
 		dealer.findSum();
 		checkForBlackJack();
-		});
-	$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
+		$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
 		// dealer.thisHit();
 		checkBust();
 	});
+		});
+	
 	$('#stayBtn').on('click', function(){
 		let stay = player.hand.sum;
 		console.log('You are staying');
