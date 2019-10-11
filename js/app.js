@@ -374,11 +374,13 @@ const dealer = {
 
 const checkForBlackJack = () => {
  if (dealer.sum === 21) {
- 	alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
- 	$('#hiddenCard').attr('src', dealer.hand[0].img);
+ 	// alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
+	$('#hiddenCard').attr('src', dealer.hand[0].img);
+	$('#goodLuck').html('BlackJack. Dealer win.')
  } else if (player.sum === 21){
- 	alert('You have a BlackJack, you win! Click reset to play again')
+ 	// alert('You have a BlackJack, you win! Click reset to play again')
  	$('#hiddenCard').attr('src', dealer.hand[0].img);
+ 	$('#goodLuck').html('BlackJack. You win!!')
  }
 }
 
