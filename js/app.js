@@ -304,7 +304,7 @@ const dealer = {
 		    let card = Math.floor(Math.random() * cardId.length);
 		    console.log('The dealer has been dealt a ' + cardId[card].suit); 
 		    this.hand.push(cardId[card]);
-		    // cardId.splice(card, 1)[0]; 
+		    cardId.splice(card, 1)[0]; 
 		   let image = document.createElement('img');
 			image.setAttribute('id', 'hiddenCard');
 			image.src = this.hand[i].img;
@@ -337,7 +337,7 @@ const dealer = {
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
-	    		// cardId.splice(this.hand, 1)[0];
+	    		cardId.splice(this.hand, 1)[0];
 	    		this.sum = parseInt(this.sum + cardId[hit].value);
 	    		console.log('The dealers total hand is now ' + this.sum);
 	    		let image = document.createElement('img');
@@ -357,7 +357,7 @@ const dealer = {
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
 	    		this.hand.push(cardId[hit]);
-	    		// cardId.splice(this.hand, 1)[0];
+	    		cardId.splice(this.hand, 1)[0];
 	    		this.sum = parseInt(this.sum + cardId[hit].value);
 	    		console.log('The dealers total hand is now ' + this.sum);
 	    		let image = document.createElement('img');
@@ -369,6 +369,11 @@ const dealer = {
 			console.log('The dealer is staying!!!');
 	}
 	}
+}
+
+const playerCount = () => {
+	let sum = 0;
+	
 }
 	
 
