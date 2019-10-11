@@ -373,12 +373,15 @@ const dealer = {
 
 const playerCount = () => {
 	let sum = 0;
-	
+
 }
 	
 
 const checkForBlackJack = () => {
- if (dealer.sum === 21) {
+ if (dealer.sum === 21 && player.sum)
+$('#hiddenCard').attr('src', dealer.hand[0].img);
+	$('#goodLuck').html('Double BlackJack.  Push.')
+ else if (dealer.sum === 21) {
  	// alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('BlackJack. Dealer win.')
