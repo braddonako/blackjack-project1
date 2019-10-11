@@ -1,4 +1,4 @@
-// ||x at the end means I have completed the task and have it working
+// ||x at// ||x at the end means I have completed the task and have it working
 
 // 1)create a deck ||x
 // 2) write a function to shuffle the deck ||x
@@ -384,23 +384,31 @@ const checkForBlackJack = () => {
 
 const checkBust = () => {
 	if (dealer.sum > 21){
-	alert('The dealer has busted, you win. Click reset to play again');
+		$('#hiddenCard').attr('src', dealer.hand[0].img);
+		$('#goodLuck').html('Dealer bust. You win.')
+	// alert('The dealer has busted, you win. Click reset to play again');
 } else if (player.sum > 21){
-	alert('You busted. Game over. Click reset to play again')
+	// alert('You busted. Game over. Click reset to play again')
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
+	$('#goodLuck').html('You bust. Dealer wins.')
+	
 } else if (player.sum > 21 && dealer.sum > 21){
-	alert('You have both busted. It is a push. Click round to play again');
+	// alert('You have both busted. It is a push. Click round to play again');
+	$('goodLuck').html('Both busts. You win.')
 }
 }
 
 
 const compareScore = () =>{
 if (player.sum === dealer.sum){
-	alert('The score is the same, it is a push. Click reset to play again');
+	// alert('The score is the same, it is a push. Click reset to play again');
+	$('#goodLuck').html('Push.');
 } else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
-	alert('You have won the round! Click reset to play again');
+	// alert('You have won the round! Click reset to play again');
+	$('#goodLuck').html('You win!')
 } else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
-	alert('The dealer has won this round. Click reset to play again');
+	// alert('The dealer has won this round. Click reset to play again');
+	$('#goodLuck').html('Dealer wins!');
 }
 }
 
