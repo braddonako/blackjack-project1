@@ -361,7 +361,7 @@ const dealer = {
 	hitAgain(){
 		this.sum = this.hand[0].value + this.hand[1].value + this.hand[2].value;
 
-		 if (this.sum < 20 || this.sum < player.sum){
+		 if (this.sum < 17 || this.sum < player.sum){
 	    	for (let i = 0; i < 1; i++){
 	    		let hit = Math.floor(Math.random() * cardId.length);
 	    		console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
@@ -384,7 +384,7 @@ const dealer = {
 	hitOneMoreTime() {
 		this.sum = this.hand[0].value + this.hand[1].value + this.hand[2].value + this.hand[3].value;
 
-		if (this.sum < 20 || this.sum < player.sum) {
+		if (this.sum < 17 || this.sum < player.sum) {
 			for (let i = 0; i < 1; i++) {
 				let hit = Math.floor(Math.random() * cardId.length);
 				console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
