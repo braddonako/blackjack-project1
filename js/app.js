@@ -259,6 +259,7 @@ const player = {
 		let image = document.createElement('img');
 		image.src = this.hand[i].img;
 		$('#yourCards').append(image);
+		
 	    }
 	},  
 	findSum(){
@@ -268,6 +269,7 @@ const player = {
 			// console.log('You have a Blackjack');
 			// return;
 		// }
+		$('#yourTotal').html(this.sum);
 	    },
 	thisHit(){
 	    // this.sum = this.hand[0].value + this.hand[1].value; // This makes it easier to see the score of the two cards. 
@@ -283,13 +285,14 @@ const player = {
 			let image = document.createElement('img');
 			image.src = cardId[hit].img;
 			$('#yourCards').append(image);
+			$('#yourTotal').html(this.sum);
 	    	} 
 	    	// if (this.sum > 21){ // this says the dealer has busted if his cards are over 21 || 
 	    	// 	//when I run the game, this runs and should end the game
 	    	// 	alert('You have busted, dealer wins');
 	    	},
 	    	stay(){
-	    		let stay = this.sum;
+				let stay = this.sum;
 	    	}
 	    }
 // }
@@ -312,6 +315,7 @@ const dealer = {
 			$(image).attr('src', '5075a.jpg');
 			this.sum = this.hand[0];
 			// $(image).append('hiddenCard');
+			$('#dealerTotal').html(this.sum);
 	    }
 	},
 	dealAgain(){
@@ -323,11 +327,13 @@ const dealer = {
 		   let image = document.createElement('img');
 			image.src = this.hand[1].img;
 			$('#dealerCards').append(image);
+			// $('#dealerTotal').html(this.sum);
 	    }
 	},
 	findSum(){
 		this.sum = this.hand[0].value + this.hand[1].value;
 		console.log(this.sum + ' is the total of the dealer two cards.');
+		$('#dealerTotal').html(this.sum - this.hand[0].value);
 		},
 	thisHit(){
 		this.sum = this.hand[0].value + this.hand[1].value;
@@ -343,10 +349,13 @@ const dealer = {
 	    		let image = document.createElement('img');
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
+				$('#dealerTotal').html(this.sum - this.hand[0].value);
+				// $('#dealerTotal').html(this.sum);
 	    	} 
 	    } 
 	    else if (this.sum >= player.sum){
 			console.log('The dealer is staying!!!');
+			$('#dealerTotal').html(this.sum);
 		} 
 	},
 	hitAgain(){
@@ -363,10 +372,13 @@ const dealer = {
 	    		let image = document.createElement('img');
 				image.src = cardId[hit].img;
 				$('#dealerCards').append(image);
+				// $('#dealerTotal').html(this.sum);
 	    	} 
 	    } 
 	    else if (this.sum >= player.sum){
 			console.log('The dealer is staying!!!');
+			$('#dealerTotal').html(this.sum);
+			
 	}
 	}
 }
@@ -384,7 +396,7 @@ const checkForBlackJack = () => {
 	$('#goodLuck').html('Double BlackJack.  Push.');
 	$('#hitBtn').off('click');
 	
- }else if (dealer.sum === 21) {
+ } else if (dealer.sum === 21) {
 	 // alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('BlackJack. Dealer win.')
@@ -437,6 +449,7 @@ if (player.sum === dealer.sum){
 		alert('Do you want to play again?')
 		window.location.reload(1);
 	}, 3000);
+	$('#dealerTotal').html(dealer.sum);
 } else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
 	// alert('You have won the round! Click reset to play again');
 	$('#goodLuck').html('You win!')
@@ -444,6 +457,7 @@ if (player.sum === dealer.sum){
 		alert('Do you want to play again?')
 		window.location.reload(1);
 	}, 3000);
+	$('#dealerTotal').html(dealer.sum);
 } else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
 	$('#goodLuck').html('Dealer wins!')
 	// alert('The dealer has won this round. Click reset to play again');
@@ -451,6 +465,7 @@ if (player.sum === dealer.sum){
 		alert('Do you want to play again?')
 		window.location.reload(1);
 	}, 3000);
+	$('#dealerTotal').html(dealer.sum);
 }
 }
 
@@ -459,10 +474,10 @@ const startGame = () => {
 	$('#dealBtn').one('click', function() { // The deal button will initiate the two card. Then give the sum in the console
 		player.deal();
 		player.findSum();
-		checkForBlackJack();
 		dealer.deal();
 		dealer.dealAgain();
 		dealer.findSum();
+		checkForBlackJack();
 		checkForBlackJack();
 		
 		$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
