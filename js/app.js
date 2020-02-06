@@ -418,18 +418,30 @@ const checkForBlackJack = () => {
 	$('#goodLuck').html('Double BlackJack.  Push.');
 	$('#hitBtn').off('click');
 	$('#dealerTotal').html(dealer.sum);
+	setTimeout(function () {
+		alert('Do you want to play again?')
+		window.location.reload(1);
+	}, 3000);
  } else if (dealer.sum === 21) {
 	 // alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('BlackJack. Dealer win.')
 	$('#hitBtn').off('click');
 	$('#dealerTotal').html(dealer.sum);
+	setTimeout(function () {
+		alert('Do you want to play again?')
+		window.location.reload(1);
+	}, 3000);
  } else if (player.sum === 21){
 	 // alert('You have a BlackJack, you win! Click reset to play again')
  	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('BlackJack. You win!!')
 	$('#hitBtn').off('click');
 	$('#dealerTotal').html(dealer.sum);
+	setTimeout(function () {
+		alert('Do you want to play again?')
+		window.location.reload(1);
+	}, 3000);
  }
 }
 
