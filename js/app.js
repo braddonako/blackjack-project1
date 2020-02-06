@@ -379,16 +379,21 @@ const dealer = {
 
 const checkForBlackJack = () => {
  if (dealer.sum === 21 && player.sum === 21){
-$('#hiddenCard').attr('src', dealer.hand[0].img);
+	
+	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('Double BlackJack.  Push.');
+	$('#hitBtn').off('click');
+	
  }else if (dealer.sum === 21) {
- 	// alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
+	 // alert('Dealer has a BlackJack, dealer wins! Click reset to play again');
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('BlackJack. Dealer win.')
+	$('#hitBtn').off('click');
  } else if (player.sum === 21){
- 	// alert('You have a BlackJack, you win! Click reset to play again')
+	 // alert('You have a BlackJack, you win! Click reset to play again')
  	$('#hiddenCard').attr('src', dealer.hand[0].img);
- 	$('#goodLuck').html('BlackJack. You win!!')
+	$('#goodLuck').html('BlackJack. You win!!')
+	$('#hitBtn').off('click');
  }
 }
 
@@ -398,8 +403,9 @@ const checkBust = () => {
 		$('#goodLuck').html('Dealer bust. You win.')
 		$('#hitBtn').off('click');
 		setTimeout(function () {
+			alert('Do you want to play again?')
 			window.location.reload(1);
-		}, 5000);
+		}, 3000);
 
 	// alert('The dealer has busted, you win. Click reset to play again');
 } else if (player.sum > 21){
@@ -408,15 +414,17 @@ const checkBust = () => {
 	$('#goodLuck').html('You bust. Dealer wins.')
 	$('#hitBtn').off('click');
 	setTimeout(function () {
+		alert('Do you want to play again?')
 		window.location.reload(1);
-	}, 5000);
+	}, 3000);
 } else if (player.sum > 21 && dealer.sum > 21){
 	// alert('You have both busted. It is a push. Click round to play again');
 	$('goodLuck').html('Both busts. You win.')
 	$('#hitBtn').off('click');
 	setTimeout(function () {
+		alert('Do you want to play again?')
 		window.location.reload(1);
-	}, 5000);
+	}, 3000);
 }
 }
 
@@ -426,20 +434,23 @@ if (player.sum === dealer.sum){
 	// alert('The score is the same, it is a push. Click reset to play again');
 	$('#goodLuck').html('Push.');
 	setTimeout(function () {
+		alert('Do you want to play again?')
 		window.location.reload(1);
-	}, 5000);
+	}, 3000);
 } else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
 	// alert('You have won the round! Click reset to play again');
 	$('#goodLuck').html('You win!')
 	setTimeout(function () {
+		alert('Do you want to play again?')
 		window.location.reload(1);
-	}, 5000);
+	}, 3000);
 } else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
+	$('#goodLuck').html('Dealer wins!')
 	// alert('The dealer has won this round. Click reset to play again');
-	$('#goodLuck').html('Dealer wins!');
 	setTimeout(function () {
+		alert('Do you want to play again?')
 		window.location.reload(1);
-	}, 4000);
+	}, 3000);
 }
 }
 
@@ -448,10 +459,12 @@ const startGame = () => {
 	$('#dealBtn').one('click', function() { // The deal button will initiate the two card. Then give the sum in the console
 		player.deal();
 		player.findSum();
+		checkForBlackJack();
 		dealer.deal();
 		dealer.dealAgain();
 		dealer.findSum();
 		checkForBlackJack();
+		
 		$('#hitBtn').on('click', function() { // the player will have an option to hit here. Drawing another card from the deck
 		player.thisHit();
 		// dealer.thisHit();
@@ -460,7 +473,7 @@ const startGame = () => {
 		});
 	
 	$('#stayBtn').one('click', function(){
-		$('#hitBtn').off('click');
+		// $('#hitBtn').off('click');
 		console.log('You are staying');
 		if (dealer.sum < player.sum){
 			dealer.thisHit();
