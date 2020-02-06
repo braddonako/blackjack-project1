@@ -397,17 +397,26 @@ const checkBust = () => {
 		$('#hiddenCard').attr('src', dealer.hand[0].img);
 		$('#goodLuck').html('Dealer bust. You win.')
 		$('#hitBtn').off('click');
+		setTimeout(function () {
+			window.location.reload(1);
+		}, 5000);
+
 	// alert('The dealer has busted, you win. Click reset to play again');
 } else if (player.sum > 21){
 	// alert('You busted. Game over. Click reset to play again')
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('You bust. Dealer wins.')
 	$('#hitBtn').off('click');
-	
+	setTimeout(function () {
+		window.location.reload(1);
+	}, 5000);
 } else if (player.sum > 21 && dealer.sum > 21){
 	// alert('You have both busted. It is a push. Click round to play again');
 	$('goodLuck').html('Both busts. You win.')
 	$('#hitBtn').off('click');
+	setTimeout(function () {
+		window.location.reload(1);
+	}, 5000);
 }
 }
 
@@ -416,12 +425,21 @@ const compareScore = () =>{
 if (player.sum === dealer.sum){
 	// alert('The score is the same, it is a push. Click reset to play again');
 	$('#goodLuck').html('Push.');
+	setTimeout(function () {
+		window.location.reload(1);
+	}, 5000);
 } else if (player.sum > dealer.sum && player.sum <= 21 && dealer.sum <= 21){
 	// alert('You have won the round! Click reset to play again');
 	$('#goodLuck').html('You win!')
+	setTimeout(function () {
+		window.location.reload(1);
+	}, 5000);
 } else if (dealer.sum > player.sum && dealer.sum <= 21 && player.sum <= 21){
 	// alert('The dealer has won this round. Click reset to play again');
 	$('#goodLuck').html('Dealer wins!');
+	setTimeout(function () {
+		window.location.reload(1);
+	}, 4000);
 }
 }
 
