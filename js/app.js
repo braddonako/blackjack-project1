@@ -371,10 +371,10 @@ const dealer = {
 	}
 }
 
-const playerCount = () => {
-	let sum = 0;
+// const playerCount = () => {
+// 	let sum = 0;
 
-}
+// }
 	
 
 const checkForBlackJack = () => {
@@ -396,15 +396,18 @@ const checkBust = () => {
 	if (dealer.sum > 21){
 		$('#hiddenCard').attr('src', dealer.hand[0].img);
 		$('#goodLuck').html('Dealer bust. You win.')
+		$('#hitBtn').off('click');
 	// alert('The dealer has busted, you win. Click reset to play again');
 } else if (player.sum > 21){
 	// alert('You busted. Game over. Click reset to play again')
 	$('#hiddenCard').attr('src', dealer.hand[0].img);
 	$('#goodLuck').html('You bust. Dealer wins.')
+	$('#hitBtn').off('click');
 	
 } else if (player.sum > 21 && dealer.sum > 21){
 	// alert('You have both busted. It is a push. Click round to play again');
 	$('goodLuck').html('Both busts. You win.')
+	$('#hitBtn').off('click');
 }
 }
 
@@ -438,7 +441,8 @@ const startGame = () => {
 	});
 		});
 	
-	$('#stayBtn').on('click', function(){
+	$('#stayBtn').one('click', function(){
+		$('#hitBtn').off('click');
 		console.log('You are staying');
 		if (dealer.sum < player.sum){
 			dealer.thisHit();
@@ -455,7 +459,7 @@ const startGame = () => {
 			$('#hiddenCard').attr('src', dealer.hand[0].img);
 		}
 		});
-	$('#resetBtn').on('click', function(){
+	$('#resetBtn').one('click', function(){
 		location.reload();
 	});
 	}
