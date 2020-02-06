@@ -380,6 +380,28 @@ const dealer = {
 			$('#dealerTotal').html(this.sum);
 			
 	}
+	},
+	hitOneMoreTime() {
+		this.sum = this.hand[0].value + this.hand[1].value + this.hand[2].value + this.hand[3].value;
+
+		if (this.sum < 20 || this.sum < player.sum) {
+			for (let i = 0; i < 1; i++) {
+				let hit = Math.floor(Math.random() * cardId.length);
+				console.log('The dealer hit. Their new card is ' + cardId[hit].suit);
+				this.hand.push(cardId[hit]);
+				// cardId.splice(this.hand, 1)[0];
+				this.sum = parseInt(this.sum + cardId[hit].value);
+				console.log('The dealers total hand is now ' + this.sum);
+				let image = document.createElement('img');
+				image.src = cardId[hit].img;
+				$('#dealerCards').append(image);
+				// $('#dealerTotal').html(this.sum);
+			}
+		} else if (this.sum >= player.sum) {
+			console.log('The dealer is staying!!!');
+			$('#dealerTotal').html(this.sum);
+
+		}
 	}
 }
 
@@ -497,6 +519,11 @@ const startGame = () => {
 		if (dealer.sum < player.sum){
 			dealer.thisHit();
 			dealer.hitAgain();
+			checkBust();
+			compareScore();
+			$('#hiddenCard').attr('src', dealer.hand[0].img);
+		} else if (dealer.sum < player.sum){
+			dealer.hitOneMoreTime();
 			checkBust();
 			compareScore();
 			$('#hiddenCard').attr('src', dealer.hand[0].img);
