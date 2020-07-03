@@ -1,6 +1,8 @@
 # blackjack-project1
 This will be a Blackjack game made with HTML, CSS and JavaScript
 
+https://braddonako.github.io/blackjack-project1/
+
 1) the object of the game is to have the closest number to 21. You can not go over 21!
 2) Player will enter their name to start the game.
 3) Player will press a deal button and they will receive two cards. The dealer will receive two cards as well
